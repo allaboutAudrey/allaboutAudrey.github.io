@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的个人主页</title>
+    <meta charset="UTF-8">
+    <title>Audrey 的个人主页</title>
+    <style>
+        /* 这里开始是 CSS */
+        
+        body {
+            /* 1. 改变背景颜色 */
+            background-color: #FFF5EE; 
+            /* 2. 改变字体颜色 */
+            color: #139;
+            /* 3. 设置字体 */
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            /* 4. 布局：让内容水平居中 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 让网页占满整个屏幕高度 */
+            margin: 0;
+        }
+
+        .card {
+            /* 5. 制作一个白色卡片布局 */
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px; /* 圆角 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 阴影 */
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #2d8cf0; /* 给标题换个棕色 */
+        }
+
+        p {
+            line-height: 1.6; /* 增加行间距，看起来不拥挤 */
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎来到 Audrey 的网站！</h1>
-    <p>这是我的第一个 GitHub Pages 页面。</p>
+
+    <div class="card">
+        <h1>你好，我叫 Audrey</h1>
+        <p>这是我通过 GitHub Pages 建立的个人空间。</p>
+        <p>目前我正在学习HTML 和 CSS，尝试让它变得更漂亮！</p>
+    </div>
+
 </body>
 </html>
