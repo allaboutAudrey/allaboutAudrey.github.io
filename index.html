@@ -1,52 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audrey 的个人主页</title>
     <style>
-        /* 这里开始是 CSS */
+        /* 基础样式复位 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            /* 1. 改变背景颜色 */
-            background-color: #FFF5EE; 
-            /* 2. 改变字体颜色 */
-            color: #139;
-            /* 3. 设置字体 */
-            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-            /* 4. 布局：让内容水平居中 */
+            font-family: "PingFang SC", "Times New roman", Helvetica, Arial, sans-serif;
+            background-color: #FFE4E1;
+            color: #255;
+            line-height: 1.6;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh; /* 让网页占满整个屏幕高度 */
-            margin: 0;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .card {
-            /* 5. 制作一个白色卡片布局 */
-            background-color: white;
+        /* 卡片容器 */
+        .container {
+            background: PeachPuff;
+            max-width: 700px;
+            width: 100%;
             padding: 40px;
-            border-radius: 20px; /* 圆角 */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 阴影 */
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             text-align: center;
-            max-width: 400px;
         }
 
-        h1 {
-            color: #2d8cf0; /* 给标题换个棕色 */
+        /* 头像（你可以换成自己的图片链接） */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
         }
 
-        p {
-            line-height: 1.6; /* 增加行间距，看起来不拥挤 */
+        h1 { font-size: 28px; margin-bottom: 8px; color: #2d3436; }
+        .subtitle { color: #636e72; font-size: 16px; margin-bottom: 24px; }
+
+        /* 简介部分 */
+        .intro {
+            font-size: 15px;
+            color: #2d3436;
+            margin-bottom: 30px;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        /* 标签/技能 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .tag {
+            background: #e1e8ed;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #4b6584;
+        }
+
+        /* 按钮链接 */
+        .links a {
+            display: block;
+            text-decoration: none;
+            background: #007AFF;
+            color: #FFDAB9;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: transform 0.2s, background 0.2s;
+            font-weight: 500;
+        }
+        .links a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .links a.secondary {
+            background: #f1f2f6;
+            color: #2f3542;
+        }
+        .links a.secondary:hover {
+            background: #dfe4ea;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>你好，我叫 Audrey</h1>
-        <p>这是我通过 GitHub Pages 建立的个人空间。</p>
-        <p>目前我正在学习HTML 和 CSS，尝试让它变得更漂亮！</p>
+    <div class="container">
+        <div class="avatar">A</div>
+        
+        <h1>Audrey</h1>
+        <p class="subtitle">Never Lose Hope</p>
+
+        <div class="intro">
+            👋 你好，我叫Audrey。目前正在学习通过 GitHub Pages 构建自动化工作流和网页设计。
+        </div>
+
+        <div class="tags">
+            <span class="tag"># 设计</span>
+            <span class="tag"># 工具</span>
+            <span class="tag"># 阅读</span>
+            <span class="tag"># 摄影</span>
+        </div>
+
+        <div class="links">
+            <a href="#">我的作品集 (待建设)</a>
+            <a href="https://github.com/allaboutAudrey" target="_blank" class="secondary">在 GitHub 上关注我</a>
+        </div>
     </div>
 
 </body>
