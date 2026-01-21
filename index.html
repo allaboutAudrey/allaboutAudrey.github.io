@@ -3,38 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey 的个人主页</title>
+    <title>Audrey | 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* 基础样式复位 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         
+        html {
+            scroll-behavior: smooth; /* 点击导航平滑滚动 */
+        }
+
         body {
-            font-family: "PingFang SC", "Times New roman", Helvetica, Arial, sans-serif;
-            background-color: #FFE4E1;
-            color: #255;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #FFE4E1; /* 浅蜜桃粉背景 */
+            color: #2d3436;
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        }
+
+        /* 顶部导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 228, 225, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d3436;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #007AFF;
+        }
+
+        /* 主容器 */
+        .main-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
             padding: 20px;
         }
 
-        /* 卡片容器 */
-        .container {
+        /* 个人信息首屏 (Hero Section) */
+        .hero-card {
             background: PeachPuff;
-            max-width: 700px;
-            width: 100%;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            padding: 50px 40px;
+            border-radius: 30px;
             text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
         }
 
-        /* 头像（你可以换成自己的图片链接） */
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0 auto 20px;
@@ -42,89 +77,47 @@
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
+            border: 5px solid white;
         }
 
-        h1 { font-size: 28px; margin-bottom: 8px; color: #2d3436; }
-        .subtitle { color: #636e72; font-size: 16px; margin-bottom: 24px; }
+        h1 { font-size: 32px; margin-bottom: 10px; }
+        .subtitle { color: #636e72; font-size: 18px; margin-bottom: 25px; }
 
-        /* 简介部分 */
-        .intro {
-            font-size: 15px;
-            color: #2d3436;
-            margin-bottom: 30px;
-            text-align: left;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 12px;
-        }
-
-        /* 标签/技能 */
         .tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
         }
         .tag {
-            background: #e1e8ed;
-            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 13px;
             color: #4b6584;
+            backdrop-filter: blur(5px);
         }
 
-        /* 按钮链接 */
-        .links a {
-            display: block;
-            text-decoration: none;
-            background: #007AFF;
-            color: #FFDAB9;
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            transition: transform 0.2s, background 0.2s;
-            font-weight: 500;
+        /* 章节标题 */
+        .section-title {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .links a:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
+
+        /* 作品网格 (Portfolio Grid) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
-        .links a.secondary {
-            background: #f1f2f6;
-            color: #2f3542;
-        }
-        .links a.secondary:hover {
-            background: #dfe4ea;
-        }
-    </style>
-</head>
-<body>
 
-    <div class="container">
-        <div class="avatar">A</div>
-        
-        <h1>Audrey</h1>
-        <p class="subtitle">Never Lose Hope</p>
-
-        <div class="intro">
-            👋 你好，我叫Audrey。目前正在学习通过 GitHub Pages 构建自动化工作流和网页设计。
-        </div>
-
-        <div class="tags">
-            <span class="tag"># 设计</span>
-            <span class="tag"># 工具</span>
-            <span class="tag"># 阅读</span>
-            <span class="tag"># 摄影</span>
-        </div>
-
-        <div class="links">
-            <a href="#">我的作品集 (待建设)</a>
-            <a href="https://github.com/allaboutAudrey" target="_blank" class="secondary">在 GitHub 上关注我</a>
-        </div>
-    </div>
-
-</body>
-</html>
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease,
