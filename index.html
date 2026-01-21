@@ -120,4 +120,138 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s ease,
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-thumb {
+            height: 180px;
+            background-color: #f1f2f6;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #dfe4ea;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 { margin-bottom: 8px; font-size: 18px; }
+        .portfolio-info p { font-size: 14px; color: #636e72; line-height: 1.5; }
+
+        /* 底部链接 */
+        .footer-links {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px dashed #fab1a0;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #007AFF;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .btn.github { background: #333; }
+
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .hero-card { padding: 30px 20px; }
+            h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">关于</a>
+        <a href="#portfolio">作品集</a>
+        <a href="https://github.com/allaboutAudrey" target="_blank">GitHub</a>
+    </nav>
+
+    <div class="main-container">
+        
+        <section id="about" class="hero-card">
+            <div class="avatar">A</div>
+            <h1>Audrey</h1>
+            <p class="subtitle">Never Lose Hope</p>
+            <p style="max-width: 500px; margin: 0 auto 25px; font-size: 15px;">
+                👋 你好！我是 Audrey。目前正专注于通过 GitHub Pages 构建自动化工作流。我热爱设计、阅读与摄影，致力于通过代码将创意变为现实。
+            </p>
+            <div class="tags">
+                <span class="tag"><i class="fas fa-palette"></i> UI 设计</span>
+                <span class="tag"><i class="fas fa-code"></i> 前端开发</span>
+                <span class="tag"><i class="fas fa-camera"></i> 摄影</span>
+                <span class="tag"><i class="fas fa-book"></i> 阅读</span>
+            </div>
+        </section>
+
+        <h2 id="portfolio" class="section-title">✨ 我的作品集</h2>
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+                <div class="portfolio-thumb">
+                    <i class="fas fa-image"></i> </div>
+                <div class="portfolio-info">
+                    <h3>摄影作品集</h3>
+                    <p>探索自然与城市的视角，记录生活中的微小瞬间。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-thumb">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h3>个人简历网页</h3>
+                    <p>使用 HTML5 和 CSS3 打造的响应式个人主页系统。</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-thumb">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h3>读书笔记</h3>
+                    <p>定期整理的技术书籍与人文社科阅读随笔。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer-links">
+            <a href="mailto:your-email@example.com" class="btn">联系我</a>
+            <a href="https://github.com/allaboutAudrey" target="_blank" class="btn github">
+                <i class="fab fa-github"></i> 关注 GitHub
+            </a>
+            <p style="margin-top: 20px; font-size: 12px; color: #b2bec3;">
+                © 2024 Audrey. Built with ❤️ on GitHub Pages.
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
