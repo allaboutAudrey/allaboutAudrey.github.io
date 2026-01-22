@@ -1,187 +1,180 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audrey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audrey | 个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #121212; /* 深色背景 */
+            --card-bg: ##d2d2c0;
+            --accent-color: #090807; /* 蜜桃色点缀 */
+            --text-main: #ffffff;
+            --text-dim: #225577;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-:root {
---bg-color: #d2d2c0； /* 深色背景 /
---card-bg: #f2d5d7;
---accent-color: #231f20; / 蜜桃色点缀 */
---text-main: #ffffff;
---text-dim: #225577;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-```
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, "PingFang SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
 
-    body {
-        font-family: 'Inter', -apple-system, "PingFang SC", sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        line-height: 1.7;
-    }
+        /* 顶部导航 */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-dim);
+            margin: 0 15px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--accent-color); }
 
-    /* 顶部导航 */
-    nav {
-        position: fixed;
-        top: 0; width: 100%;
-        background: rgba(18, 18, 18, 0.8);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        padding: 20px 0;
-        text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    nav a {
-        text-decoration: none;
-        color: var(--text-dim);
-        margin: 0 15px;
-        font-size: 14px;
-        transition: 0.3s;
-    }
-    nav a:hover { color: var(--accent-color); }
+        .container {
+            max-width: 900px;
+            margin: 100px auto 60px;
+            padding: 0 30px;
+        }
 
-    .container {
-        max-width: 900px;
-        margin: 100px auto 60px;
-        padding: 0 30px;
-    }
+        /* Hero Section (参考 Jeff Su 的风格) */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .avatar {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 20px; /* 方圆风格更现代 */
+            background: var(--accent-color);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .hero-text h1 { font-size: 48px; margin-bottom: 10px; color: var(--accent-color); }
+        .hero-text p { font-size: 18px; color: var(--text-dim); }
 
-    /* Hero Section (参考 Jeff Su 的风格) */
-    .hero {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        margin-bottom: 80px;
-    }
-    .avatar {
-        flex-shrink: 0;
-        width: 180px;
-        height: 180px;
-        border-radius: 20px; /* 方圆风格更现代 */
-        background: var(--accent-color);
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        /* 通用章节样式 */
+        section { margin-bottom: 60px; }
+        h2.section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
 
-    .hero-text h1 { font-size: 48px; margin-bottom: 10px; color: var(--accent-color); }
-    .hero-text p { font-size: 18px; color: var(--text-dim); }
+        /* 时间线/经历卡片 */
+        .experience-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--accent-color);
+            margin-bottom: 40px;
+        }
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -9px; top: 5px;
+            width: 16px; height: 16px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        .experience-header h3 { font-size: 20px; color: var(--accent-color); }
+        .date { font-size: 14px; color: var(--text-dim); }
+        .company { font-weight: bold; color: #fff; margin-bottom: 10px; display: block;}
 
-    /* 通用章节样式 */
-    section { margin-bottom: 60px; }
-    h2.section-title {
-        font-size: 24px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 10px;
-    }
+        /* 生活经历网格 */
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .life-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .life-card:hover { transform: translateY(-5px); }
+        .life-card i { font-size: 24px; color: var(--accent-color); margin-bottom: 15px; display: block;}
 
-    /* 时间线/经历卡片 */
-    .experience-item {
-        position: relative;
-        padding-left: 30px;
-        border-left: 2px solid var(--accent-color);
-        margin-bottom: 40px;
-    }
-    .experience-item::before {
-        content: '';
-        position: absolute;
-        left: -9px; top: 5px;
-        width: 16px; height: 16px;
-        background: var(--bg-color);
-        border: 2px solid var(--accent-color);
-        border-radius: 50%;
-    }
-    .experience-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 10px;
-    }
-    .experience-header h3 { font-size: 20px; color: var(--accent-color); }
-    .date { font-size: 14px; color: var(--text-dim); }
-    .company { font-weight: bold; color: #fff; margin-bottom: 10px; display: block;}
+        /* 联系方式 */
+        .contact-box {
+            background: var(--accent-color);
+            color: #121212;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .contact-box h2 { margin-bottom: 20px; }
+        .social-links { margin-top: 20px; }
+        .social-links a { color: #121212; font-size: 24px; margin: 0 15px; }
 
-    /* 生活经历网格 */
-    .life-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    .life-card {
-        background: var(--card-bg);
-        padding: 20px;
-        border-radius: 15px;
-        transition: 0.3s;
-    }
-    .life-card:hover { transform: translateY(-5px); }
-    .life-card i { font-size: 24px; color: var(--accent-color); margin-bottom: 15px; display: block;}
-
-    /* 联系方式 */
-    .contact-box {
-        background: var(--accent-color);
-        color: #121212;
-        padding: 40px;
-        border-radius: 20px;
-        text-align: center;
-    }
-    .contact-box h2 { margin-bottom: 20px; }
-    .social-links { margin-top: 20px; }
-    .social-links a { color: #121212; font-size: 24px; margin: 0 15px; }
-
-    @media (max-width: 768px) {
-        .hero { flex-direction: column; text-align: center; }
-        .experience-header { flex-direction: column; gap: 5px; }
-    }
-</style>
-
-```
-
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .experience-header { flex-direction: column; gap: 5px; }
+        }
+    </style>
 </head>
 <body>
 
-```
-<nav>
-    <a href="#education">教育</a>
-    <a href="#experience">实习</a>
-    <a href="#life">经历</a>
-    <a href="#contact">联系</a>
-</nav>
+    <nav>
+        <a href="#education">教育</a>
+        <a href="#experience">实习</a>
+        <a href="#life">经历</a>
+        <a href="#contact">联系</a>
+    </nav>
 
-<div class="container">
-
-    <div class="hero">
-        <div class="avatar">
-            <img src="images/avatar.jpg" alt="Audrey">
-        </div>
-        <div class="hero-text">
-            <h1>Audrey</h1>
-            <p>Explorer</p>
-            <div style="margin-top: 20px;">
-                <span style="background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 5px; font-size: 12px;">📍 湾区（深圳/广州/香港）</span>
+    <div class="container">
+        
+        <div class="hero">
+            <div class="avatar">
+                <img src="images/avatar.jpg" alt="Audrey">
+            </div>
+            <div class="hero-text">
+                <h1>Audrey</h1>
+                <p>EXPLORER</p>
+                <div style="margin-top: 20px;">
+                    <span style="background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 5px; font-size: 12px;">📍 深圳/香港</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <section id="education">
+        <section id="education">
         <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 教育背景</h2>
         <div class="experience-item">
             <div class="experience-header">
                 <h3>四川农业大学</h3>
                 <span class="date">2021 - 2025 (预计)</span>
             </div>
-            <span class="company">本科主修：广告学专业</span>
-            <p style="color: var(--text-dim);">专业课程：市场营销、用户研究、消费者行为学、战略品牌管理、市场调查与统计 GPA: 3.83/4.0</p>
+            <span class="company">本科主修：广告学专业 ｜ GPA: 3.83/4.0</span>
+            <p style="color: var(--text-dim);">专业课程：市场营销、用户研究、消费者行为学、战略品牌管理、市场调查与统计</p>
         </div>
     </section>
 
@@ -193,62 +186,50 @@
                 <span class="date">2025.07 - 2025.01</span>
             </div>
             <span class="company">品牌星球</span>
-            <p style="color: var(--text-dim);">【客咨管理与市场洞察】针对客咨分散，信息易丢失的问题，日均收拢并处理 15 条 B 端合作咨询，从沟通中深挖用户需求，并撰写日、周报反馈至核心业务部门；
-【数据分析与标准建立】针对需求杂乱，无法定量分析的问题，整合分析 100+ 客咨，建立分类类目与有效性评估标准，输出《需求分析可视化画板》，将「定性」咨询转为定量数据，提炼核心业务点；
-【数据决策与趋势提炼】针对CRM系统录入低效以及业务调整缺乏数据支撑的问题，重新制定录入标准，提升有效录入率至 200%，分析周期性数据变化并形成 12 份趋势简报、4 份数据分析报告；
-【标准化运营体系搭建】从0到1建立「需求分流 SOP」明确团队成员职责范围，撰写 1 套标准沟通话术保持用户体验一致性；
-【商务对接与合作策划】参与 B2B 合作会议（含议价、权益、年框、bundle方案等商议），输出 14 份会议 memo并起草策划 10 次，具备商务沟通与客制化方案呈现能力。</p>
+            <p style="color: var(--text-dim);">【客咨管理与市场洞察】针对客咨分散易丢失的问题，日均收拢并处理 15 条 B 端合作咨询，从中深挖用户需求，并撰写日、周报反馈核心业务部门；
+            【数据分析与标准建立】针对需求杂乱，无法定量分析的问题，整合分析 100+ 客咨，建立分类类目与有效性评估标准，输出《需求分析可视化画板》，将「定性」咨询转为定量数据，提炼核心业务点； 
+            【数据决策与趋势提炼】针对CRM系统录入低效以及业务调整缺乏数据支撑的问题，重新制定录入标准，提升有效录入率至 200%，分析周期性数据变化并形成 12 份趋势简报、4 份数据分析报告；
+            【商务对接与合作策划】参与 B2B 合作会议（含议价、权益、年框、bundle方案等商议），输出 14 份会议 memo并起草策划 10 次，具备商务沟通与客制化方案呈现能力。</p>
         </div>
         <div class="experience-header">
                 <h3>品牌传播部--品牌传播</h3>
                 <span class="date">2025.01 - 2025.04</span>
             </div>
             <span class="company">Impact Hub Shanghai</span>
-            <p style="color: var(--text-dim);">【竞对分析与策略优化】针对选题缺乏数据支持的问题，分析 7 个对标账号的内容结构与互动策略，输出《传播优化方案》定位市场空白；
-【方法沉淀与效率提升】针对新项目内容质量不稳定的问题，协助策划 2 个新内容栏目并沉淀配套 SOP，提升内容输出效率 30%，确保不同传播触点上的一致呈现；
-【内容生产与数据增长】负责品牌调研及信息提炼，共产出7篇文章，运营期间粉丝数增长33%（690-920），单篇数据最高提升 6 倍。</p>
-        </div>
-        <div class="experience-header">
-                <h3>品牌传播部--品牌传播</h3>
-                <span class="date">2025.01 - 2025.04</span>
-            </div>
-            <span class="company">Impact Hub Shanghai</span>
-            <p style="color: var(--text-dim);">【竞对分析与策略优化】针对选题缺乏数据支持的问题，分析 7 个对标账号的内容结构与互动策略，输出《传播优化方案》定位市场空白；
-【方法沉淀与效率提升】针对新项目内容质量不稳定的问题，协助策划 2 个新内容栏目并沉淀配套 SOP，提升内容输出效率 30%，确保不同传播触点上的一致呈现；
-【内容生产与数据增长】负责品牌调研及信息提炼，共产出7篇文章，运营期间粉丝数增长33%（690-920），单篇数据最高提升 6 倍。</p>
+            <p style="color: var(--text-dim);">【竞对分析与策略优化】针对选题缺乏数据支持的问题，分析 7 个对标账号的内容结构与互动策略，输出《传播优化方案》定位市场空白；
+            【方法沉淀与效率提升】针对新项目内容质量不稳定的问题，协助策划 2 个新内容栏目并沉淀配套 SOP，提升内容输出效率 30%，确保不同传播触点上的一致呈现；
+            【内容生产与数据增长】负责品牌调研及信息提炼，共产出7篇文章，运营期间粉丝数增长33%（690-920），单篇数据最高提升 6 倍。</p>
         </div>
     </section>
 
-    <section id="life">
-        <h2 class="section-title"><i class="fas fa-heart"></i> 项目经历e</h2>
-        <div class="life-grid">
-            <div class="life-card">
-                <i class="fas fa-camera"></i>
-                <h3>独立摄影</h3>
-                <p style="color: var(--text-dim); font-size: 14px;">**%**</p>
+        <section id="life">
+            <h2 class="section-title"><i class="fas fa-heart"></i> 生活</h2>
+            <div class="life-grid">
+                <div class="life-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>CITY WALK·观察者</h3>
+                    <p style="color: var(--text-dim); font-size: 14px;">记录了超过 50 个城市的街头瞬间，个人摄影集获得过某某奖项。</p>
+                </div>
+                <div class="life-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>SOLO TRIP·背包客</h3>
+                    <p style="color: var(--text-dim); font-size: 14px;">独自前往 5 个国家旅行，锻炼了极强的应急处理与跨文化交流能力。</p>
+                </div>
             </div>
-            <div class="life-card">
-                <i class="fas fa-plane"></i>
-                <h3>背包旅行</h3>
-                <p style="color: var(--text-dim); font-size: 14px;">SOLO TRIP is my comfortzone 3 个国家及地区旅行，锻炼了极强的应急处理与跨文化交流能力。</p>
+        </section>
+
+        <section id="contact">
+            <div class="contact-box">
+                <h2>CONTACT</h2>
+                <p>Find Me:</p>
+                <div class="social-links">
+                    <a href="mailto:15182555061@163.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/allaboutAudrey"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <div class="contact-box">
-            <h2>Contact</h2>
-            <p>find me：</p>
-            <div class="social-links">
-                <a href="mailto:15182555061@163.com"><i class="fas fa-envelope"></i></a>
-                <a href="<https://github.com/allaboutAudrey>"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-```
+    </div>
 
 </body>
 </html>
