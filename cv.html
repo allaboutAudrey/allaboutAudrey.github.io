@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audrey Xu | Personal Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -14,20 +14,26 @@
             --text-light: #999999;
             --accent-color: #007AFF;
             --section-margin: 60px;
-            --content-width: 730px; /* 匹配您 Figma 标注的宽度 */
+            --content-width: 730px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        .highlight {
+            background: linear-gradient(120deg, #ae8087 0%, #ae8087 100%); /* 浅红色背景 */
+            font-weight: 600;      /* 加粗一点点 */
+            color: #1a1a1a;        /* 文字颜色不变 */
+            padding: 0 4px;        /* 左右留一点呼吸感 */
+            border-radius: 2px;    /* 微小的圆角 */
+        }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f5f5f7; /* 背景略带灰色，突出主容器 */
+            background-color: #f5f5f7;
             color: var(--text-main);
             line-height: 1.6;
             padding: 40px 20px;
         }
 
-        /* 主页面容器 - 模拟 Read.cv 的白底卡片感 */
         .page-container {
             max-width: var(--content-width);
             margin: 0 auto;
@@ -37,7 +43,6 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.04);
         }
 
-        /* Header 部分 */
         header {
             display: flex;
             align-items: center;
@@ -46,133 +51,92 @@
         }
 
         .profile-pic {
-            width: 100px;
-            height: 100px;
+            width: 100px; height: 100px;
             border-radius: 50%;
             object-fit: cover;
         }
 
-        .header-info h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+        .header-info h1 { font-size: 28px; font-weight: 600; margin-bottom: 4px; }
 
         .website-tag {
-            font-size: 13px;
-            color: var(--text-secondary);
-            background: #f2f2f2;
-            padding: 4px 12px;
-            border-radius: 6px;
-            text-decoration: none;
+            font-size: 13px; color: var(--text-secondary);
+            background: #f2f2f2; padding: 4px 12px;
+            border-radius: 6px; text-decoration: none;
         }
 
-        /* 章节通用样式 */
-        section {
-            margin-bottom: var(--section-margin);
+        section { margin-bottom: var(--section-margin); }
+
+        /* 针对 Hello 标题的特殊样式 */
+        .hello-title {
+            font-size: 32px; font-weight: 700;
+            color: var(--text-main); margin-bottom: 20px;
         }
 
         .section-title {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            border-bottom: 1px solid #eeeeee;
-            padding-bottom: 8px;
+            font-size: 15px; font-weight: 500;
+            color: var(--text-secondary); margin-bottom: 24px;
+            border-bottom: 1px solid #eeeeee; padding-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .content-text {
-            font-size: 16px;
-            color: var(--text-main);
-            white-space: pre-line; /* 保留换行 */
-        }
+        .content-text { font-size: 16px; color: var(--text-secondary); }
 
-        /* 列表项样式 (教育、经历等) */
         .entry {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            margin-bottom: 24px;
-            gap: 20px;
+            display: grid; grid-template-columns: 140px 1fr;
+            margin-bottom: 24px; gap: 20px;
         }
 
-        .entry-date {
-            font-size: 14px;
-            color: var(--text-light);
+        .entry-date { font-size: 14px; color: var(--text-light); }
+        .entry-details h3 { font-size: 16px; font-weight: 500; }
+        .entry-sub { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* 技能标签样式 */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+        }
+        .skill-category h4 {
+            font-size: 14px; color: var(--text-light);
+            margin-bottom: 12px; font-weight: 500;
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            background: #f8f8f9; color: #444;
+            padding: 4px 10px; border-radius: 6px;
+            font-size: 13px; border: 1px solid #eee;
         }
 
-        .entry-details h3 {
-            font-size: 16px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        /* 奖项样式 */
+        .award-item {
+            margin-bottom: 16px; display: flex;
+            justify-content: space-between; align-items: flex-start;
+        }
+        .award-info h3 { font-size: 15px; font-weight: 500; }
+        .award-info p { font-size: 13px; color: var(--text-secondary); }
+        .award-rank {
+            font-size: 12px; background: #fff5f5; color: #e03131;
+            padding: 2px 8px; border-radius: 4px; font-weight: 600;
         }
 
-        .entry-details h3 i {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .entry-sub {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* 作品集图片展示区域 */
+        /* 作品集图片 */
         .work-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 12px; margin-top: 15px;
         }
-
         .gallery-item {
-            aspect-ratio: 16 / 9;
-            background: #f9f9f9;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #eee;
+            aspect-ratio: 16 / 9; background: #f9f9f9;
+            border-radius: 8px; overflow: hidden; border: 1px solid #eee;
         }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* 侧边项目与联系方式 */
         .link-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f9f9f9;
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 15px;
-            transition: color 0.2s;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid #f9f9f9;
+            text-decoration: none; color: var(--text-main); font-size: 15px;
         }
 
-        .link-item:hover {
-            color: var(--accent-color);
-        }
-
-        .link-item span:last-child {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* 响应式适配 */
         @media (max-width: 768px) {
             .page-container { padding: 40px 24px; }
-            .entry { grid-template-columns: 1fr; gap: 8px; }
-            .work-gallery { grid-template-columns: 1fr; }
+            .entry, .skills-grid { grid-template-columns: 1fr; }
             header { flex-direction: column; text-align: center; }
         }
     </style>
@@ -188,13 +152,11 @@
                 <a href="#" class="website-tag">website.com</a>
             </div>
         </header>
-
-        <section>
-            <h2 class="section-title">Hello</h2>
+        
+        <section style="margin-top: 40px;"> <h2 class="hello-title">Hello</h2>
             <p class="content-text">
-                I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University, a 211 institution, and also exploring specific future development directions.
-                
-                I have academic experience in User Research, Market Investigation, Consumer Behavior, Brand Strategy Management, Marketing, Advertising Copywriting, Advertising Effectiveness Research, and Advertising Operations and Management.
+                I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University, <span class="highlight">a 211 institution</span>, and also exploring specific future development directions.
+                <br><br> I have academic experience in User Research,  Consumer Behavior, Marketing, Market Investigation, Brand Strategy Management, Advertising Copywriting, Advertising Effectiveness Research, and Advertising Operations and Management. Additionally, I have internship experience in administrative management, <span class="highlight">brand communication (ToC), user operations (ToB), and B2B business</span>.
             </p>
         </section>
 
@@ -210,63 +172,123 @@
         </section>
 
         <section>
-            <h2 class="section-title">Internship</h2>
-            <div class="entry">
-                <div class="entry-date">2025.07 — 2026.01</div>
-                <div class="entry-details">
-                    <h3>Brandstar <i class="fas fa-arrow-up-right-from-square"></i></h3>
-                    <p class="entry-sub">Atlanta, GA</p>
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Data & Coding</h4>
+                    <div class="skill-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Vibe Coding</span>
+                        <span class="tag">Figma (Prototyping)</span>
+                        <span class="tag">Python (Learned blindly🥴)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Design</h4>
+                    <div class="skill-tags">
+                        <span class="tag">Canvas</span>
+                        <span class="tag">Keynote</span>
+                        <span class="tag">Photoshop</span>
+                        <span class="tag">Figma (Design)</span>
+                    </div>
+                </div>
+                <div class="skill-category" style="margin-top: 10px;">
+                    <h4>Management</h4>
+                    <div class="skill-tags">
+                        <span class="tag">Notion</span>
+                        <span class="tag">Feishu</span>
+                        <span class="tag">CRM</span>
+                    </div>
+                </div>
+                <div class="skill-category" style="margin-top: 10px;">
+                    <h4>Languages</h4>
+                    <div class="skill-tags">
+                        <span class="tag">English (IELTS 7.0)</span>
+                        <span class="tag">Mandarin (Native)</span>
+                    </div>
+                </div>
+                </div>
+                <div class="skill-category" style="margin-top: 10px;">
+                    <h4>My AI Mentor</h4>
+                    <div class="skill-tags">
+                        <span class="tag">ChatGPT</span>
+                        <span class="tag">Gemini</span>
+                        <span class="tag">Cursor</span>
+                        <span class="tag">AnyGen</span>
+                        <span class="tag">Genspark</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2 class="section-title">Project Experience</h2>
-            <div class="entry">
-                <div class="entry-date">2024.11</div>
-                <div class="entry-details">
-                    <h3>Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></h3>
-                    <p class="entry-sub">Atlanta, GA</p>
+            <h2 class="section-title">Awards</h2>
+            
+            <div class="award-item">
+                <div class="award-info">
+                    <h3>National Advertising Art Competition for College Students (16th)</h3>
+                    <p>National Advertising Art Design Competition for College Students (16th)</p>
                 </div>
+                <span class="award-rank">Third Prize</span>
+            </div>
+
+            <div class="award-item">
+                <div class="award-info">
+                    <h3>New Media Competition for Western and Central China University Students</h3>
+                    <p>New Media Competition for Western and Central China University Students</p>
+                </div>
+                <span class="award-rank">Third Prize</span>
+            </div>
+
+            <div class="award-item">
+                <div class="award-info">
+                    <h3>Times Young Creative Award (33rd)</h3>
+                    <p>Times Young Creative Award (33rd)</p>
+                </div>
+                <span class="award-rank">Second Prize</span>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-info">
+                    <h3>Sichuan Province Leibo Cup Agricultural Creative Design Competition</h3>
+                    <p>Sichuan Province Leibo Cup Agricultural Creative Design Competition</p>
+                </div>
+                <span class="award-rank">First Prize</span>
             </div>
         </section>
 
         <section>
             <h2 class="section-title">Side Projects</h2>
-            
             <div class="project-container">
                 <a href="#" class="link-item">
-                    <span>Nature walks</span>
-                    <span>2021 <i class="fas fa-arrow-up-right-from-square"></i></span>
+                    <span>Photography & Travel</span>
+                    <span>A lifetime passion<i class="fas fa-arrow-up-right-from-square"></i></span>
                 </a>
                 <div class="work-gallery">
-                    <div class="gallery-item"><img src="images/nature1.jpg" alt="Nature Project 1"></div>
-                    <div class="gallery-item"><img src="images/nature2.jpg" alt="Nature Project 2"></div>
-                    <div class="gallery-item"><img src="images/nature3.jpg" alt="Nature Project 3"></div>
-                </div>
-            </div>
-        
-            <div class="project-container" style="margin-top: 30px;">
-                <a href="#" class="link-item">
-                    <span>Plant-based cookware</span>
-                    <span>2020 <i class="fas fa-arrow-up-right-from-square"></i></span>
-                </a>
-                <div class="work-gallery">
-                    <div class="gallery-item"><img src="images/cook1.jpg" alt="Cookware Project 1"></div>
-                    <div class="gallery-item"><img src="images/cook2.jpg" alt="Cookware Project 2"></div>
-                    <div class="gallery-item"><img src="images/cook3.jpg" alt="Cookware Project 3"></div>
+                    <div class="gallery-item"><img src="images/nature1.jpg"></div>
+                    <div class="gallery-item"><img src="images/nature2.jpg"></div>
+                    <div class="gallery-item"><img src="images/nature3.jpg"></div>
                 </div>
             </div>
         </section>
 
         <section id="contact">
             <h2 class="section-title">Contact</h2>
-            <a href="#" class="link-item"><span>Threads</span><span>username <i class="fas fa-arrow-right"></i></span></a>
-            <a href="#" class="link-item"><span>Figma</span><span>username <i class="fas fa-arrow-right"></i></span></a>
-            <a href="#" class="link-item"><span>X</span><span>username <i class="fas fa-arrow-right"></i></span></a>
+            <a href="#" class="link-item"><span>Email</span><span>15182555061@163.com<i class="fas fa-arrow-right"></i></span></a>
+            <a href="#" class="link-item"><span>Figma</span><span>@username <i class="fas fa-arrow-right"></i></span></a>
         </section>
 
+        </div>
+        <footer class="footer-links">
+            <a href="mailto:your-email@example.com" class="btn">Reach Out</a>
+            <a href="<https://github.com/allaboutAudrey>" target="_blank" class="btn github">
+                <i class="fab fa-github"></i>
+            </a>
+            <p style="margin-top: 20px; font-size: 12px; color: #b2bec3;">
+                © 2026 Audrey. Built with ❤️ on GitHub Pages.
+            </p>
+        </footer>
     </div>
-
 </body>
 </html>
