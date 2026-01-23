@@ -79,7 +79,33 @@
             display: inline-block;
             margin-top: 8px;
         }
+        /* Header 信息容器改为垂直排列 */
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px; /* 控制行与行之间的微小间距 */
+        }
 
+        .header-info h1 {
+            margin-bottom: 2px;
+        }
+
+        /* 个人留言样式 */
+        .header-tagline {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Location 样式 */
+        .header-location {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px; /* 图标和文字的间距 */
+        }
+        
         /* 章节通用样式 */
         section {
             margin-bottom: 80px;
@@ -224,7 +250,6 @@
         <section style="margin-top: 40px;"> <h2 class="hello-title">Hello</h2>
             <p class="content-text">
                 I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University<span class="highlight-text">(211)</span>, and also exploring specific future development directions.
-                <br><br> I have academic experience in User Research,  Consumer Behavior, Marketing, Market Investigation, Brand Strategy Management, Advertising Effectiveness Research, and Advertising Operations and Management.
                 <br><br> Additionally, I have internship experience in <span class="highlight-text">administrative management, brand communication (ToC), user operations (ToB), and B2B business</span>.
             </p>
         </section>
@@ -236,7 +261,9 @@
                     <div class="entry-date">2022 — 2026</div>
                     <div class="entry-details">
                         <h3>Sichuan Agricultural University</h3>
-                        <p class="entry-sub">School of Arts and Media - Advertising</p>
+                        <p class="entry-sub">School of Arts and Media - Advertising
+                        <br><br> Major Courses：User Research,  Consumer Behavior, Marketing, Brand Strategy Management, Advertising Effectiveness Research, Advertising Operations and Management.
+                        <br><br> GPA：3.83/4.0
                     </div>
                 </div>
             </section>
