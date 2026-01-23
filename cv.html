@@ -20,7 +20,7 @@
 
          /* 定义一个名为 'highlight-text' 的类 */
         .highlight-text {
-            color: #ae8087;       /* 这里换成你想要的颜色，比如蓝色 */
+            color: #0477b4;       /* 这里换成你想要的颜色，比如蓝色 */
             font-weight: 500;      /* 没有加粗 */
         }
     
@@ -34,7 +34,7 @@
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background-color: #ffffff; /* 改为纯白背景，更像 Jeff Su 的极简感 */
+            background-color: #d2d2c0; /* 改为纯白背景，更像 Jeff Su 的极简感 */
             color: var(--text-main);
             line-height: 1.7;
             padding: 60px 20px;
@@ -163,6 +163,29 @@
             color: var(--text-secondary);
         }
 
+        /* 项目描述列表样式 */
+        .entry-description {
+            list-style: none; /* 去掉默认的小圆点 */
+            margin-top: 12px; /* 与上方地点信息的间距 */
+            padding-left: 0;
+        }
+
+        .entry-description li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 8px; /* 每条工作内容之间的间距 */
+            position: relative;
+            padding-left: 18px; /* 为自定义符号留出空间 */
+        }
+
+        /* 使用更加优雅的自定义小横杠作为符号 */
+        .entry-description li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-light);
+        }
+
         /* 技能标签组 */
         .skill-group { margin-bottom: 24px; }
         .skill-group h4 { font-size: 14px; color: var(--text-light); margin-bottom: 12px; }
@@ -263,8 +286,11 @@
                         <h3>Sichuan Agricultural University</h3>
                         <p class="entry-sub">School of Arts and Media - Advertising
                         <h3>Courses</h3>
-                        <p> User Research, Consumer Behavior, Marketing, Brand Strategy Management, 
-                                Advertising Effectiveness Research, Advertising Operations and Management.
+                        <p> User Research, Consumer Behavior, Marketing, 
+                            Advertising Media Research,
+                            Strategic Brand Management, 
+                            Market Investigation and Statistics, 
+                            Advertising Operations and Management.
                          </p>
                         <h3>Score</h3>
                         <p> GPA: 3.83/4.0
@@ -315,6 +341,97 @@
         </div>
             </section>
         </div>
+
+        <section>
+            <h2 class="section-title">Internship Experience</h2>
+            <div class="entry">
+                <div class="entry-date">2025.07 - 2026.01</div> <div class="entry-details">
+                    <h3>Brandstar<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    <p class="entry-sub">Guangzhou</p>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="entry-date">2025.10 - 2025.04</div> <div class="entry-details">
+                    <h3>Impact Hub Shanghai<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    <p class="entry-sub">Shanghai</p>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Project Experience</h2>
+            <div class="entry">
+                <div class="entry-date">2025.04</div> <div class="entry-details">
+                    <h3>新媒体运营（小红书博主）<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="entry-date">2024.11</div> <div class="entry-details">
+                    <h3>用户研究（APP产品设计）<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="entry-date">2023.11</div> <div class="entry-details">
+                    <h3>市场营销（校园外卖运营）<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="entry">
+                <div class="entry-date">2023.05</div> <div class="entry-details">
+                    <h3>四川省农产品设计大赛<i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    
+                    <ul class="entry-description">
+                        <li>负责品牌视觉系统的调研与分析，通过收集 20+ 行业案例为设计方向提供数据支撑。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思，协助完成视觉原型设计（Figma）。</li>
+                        <li>与跨职能团队协作，协调设计文档的版本管理，提升团队协作效率约 15%。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Side Projects</h2>
+            <div class="project-container">
+                <a href="#" class="link-item" style="border: none;">
+                    <span style="font-size: 18px; font-weight: 600;">Photography</span>
+                    <span>2023 - Now<i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+                <div class="work-gallery">
+                    <div class="gallery-item"><img src="images/nature1.jpg"></div>
+                    <div class="gallery-item"><img src="images/nature2.jpg"></div>
+                    <div class="gallery-item"><img src="images/nature3.jpg"></div>
+                </div>
+            </div>
+        </section>
         
         <section>
             <h2 class="section-title">Awards</h2>
@@ -343,17 +460,10 @@
         </section>
 
         <section>
-            <h2 class="section-title">Side Projects</h2>
-            <div class="project-container">
-                <a href="#" class="link-item" style="border: none;">
-                    <span style="font-size: 18px; font-weight: 600;">Photography</span>
-                    <span>2023 - Now<i class="fas fa-arrow-up-right-from-square"></i></span>
-                </a>
-                <div class="work-gallery">
-                    <div class="gallery-item"><img src="images/nature1.jpg"></div>
-                    <div class="gallery-item"><img src="images/nature2.jpg"></div>
-                    <div class="gallery-item"><img src="images/nature3.jpg"></div>
-                </div>
+            <h2 class="section-title">Contact</h2>
+            <div class="grid-two-columns">
+                <a href="#" class="link-item"><span>15182555061</span><span>@163.com</span></a>
+                <a href="#" class="link-item"><span>Figma</span><span>@username</span></a>
             </div>
         </section>
 
