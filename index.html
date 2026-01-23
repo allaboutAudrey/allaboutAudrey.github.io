@@ -3,233 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey | 个人简历</title>
+    <title>Audrey Xu | Personal Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: ##d2d2c0;
-            --accent-color: #d2d2c0;
-            --text-main: #f3e9d9;
-            --text-dim: #ffffff;
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --accent-color: #007AFF;
+            --section-margin: 60px;
+            --content-width: 730px; /* 匹配您 Figma 标注的宽度 */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, "PingFang SC", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-        }
-
-        /* 顶部导航 */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--text-dim);
-            margin: 0 15px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        nav a:hover { color: var(--accent-color); }
-
-        .container {
-            max-width: 900px;
-            margin: 100px auto 60px;
-            padding: 0 30px;
-        }
-
-        /* Hero Section (参考 Jeff Su 的风格) */
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-        .avatar {
-            flex-shrink: 0;
-            width: 180px;
-            height: 180px;
-            border-radius: 20px; /* 方圆风格更现代 */
-            background: var(--accent-color);
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .avatar img { width: 100%; height: 100%; object-fit: cover; }
         
-        .hero-text h1 { font-size: 48px; margin-bottom: 10px; color: var(--accent-color); }
-        .hero-text p { font-size: 18px; color: var(--text-dim); }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f5f7; /* 背景略带灰色，突出主容器 */
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
 
-        /* 通用章节样式 */
-        section { margin-bottom: 60px; }
-        h2.section-title {
-            font-size: 24px;
-            margin-bottom: 30px;
+        /* 主页面容器 - 模拟 Read.cv 的白底卡片感 */
+        .page-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            background: var(--bg-color);
+            padding: 80px 60px;
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+        }
+
+        /* Header 部分 */
+        header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
+            gap: 24px;
+            margin-bottom: var(--section-margin);
         }
 
-        /* 时间线/经历卡片 */
-        .experience-item {
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid var(--accent-color);
-            margin-bottom: 40px;
-        }
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -9px; top: 5px;
-            width: 16px; height: 16px;
-            background: var(--bg-color);
-            border: 2px solid var(--accent-color);
+        .profile-pic {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
+            object-fit: cover;
         }
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-        .experience-header h3 { font-size: 20px; color: var(--accent-color); }
-        .date { font-size: 14px; color: var(--text-dim); }
-        .company { font-weight: bold; color: #fff; margin-bottom: 10px; display: block;}
 
-        /* 生活经历网格 */
-        .life-grid {
+        .header-info h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .website-tag {
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: #f2f2f2;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        /* 章节通用样式 */
+        section {
+            margin-bottom: var(--section-margin);
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 8px;
+        }
+
+        .content-text {
+            font-size: 16px;
+            color: var(--text-main);
+            white-space: pre-line; /* 保留换行 */
+        }
+
+        /* 列表项样式 (教育、经历等) */
+        .entry {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 140px 1fr;
+            margin-bottom: 24px;
             gap: 20px;
         }
-        .life-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-        .life-card:hover { transform: translateY(-5px); }
-        .life-card i { font-size: 24px; color: var(--accent-color); margin-bottom: 15px; display: block;}
 
-        /* 联系方式 */
-        .contact-box {
-            background: var(--accent-color);
-            color: #d2d2c0;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
+        .entry-date {
+            font-size: 14px;
+            color: var(--text-light);
         }
-        .contact-box h2 { margin-bottom: 20px; }
-        .social-links { margin-top: 20px; }
-        .social-links a { color: #ffffff; font-size: 24px; margin: 0 15px; }
 
+        .entry-details h3 {
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .entry-details h3 i {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .entry-sub {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* 作品集图片展示区域 */
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 16 / 9;
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 侧边项目与联系方式 */
+        .link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f9f9f9;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .link-item:hover {
+            color: var(--accent-color);
+        }
+
+        .link-item span:last-child {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; }
-            .experience-header { flex-direction: column; gap: 5px; }
+            .page-container { padding: 40px 24px; }
+            .entry { grid-template-columns: 1fr; gap: 8px; }
+            .work-gallery { grid-template-columns: 1fr; }
+            header { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#education">EDUCATION</a>
-        <a href="#experience">INTERNSHIP</a>
-        <a href="#life">LIFESTYLE</a>
-        <a href="#contact">CONTACT</a>
-    </nav>
-
-    <div class="container">
+    <div class="page-container">
         
-        <div class="hero">
-            <div class="avatar">
-                <img src="images/avatar.jpg" alt="Audrey">
+        <header>
+            <img src="images/avatar.jpg" alt="Audrey Xu" class="profile-pic">
+            <div class="header-info">
+                <h1>Audrey Xu</h1>
+                <a href="#" class="website-tag">website.com</a>
             </div>
-            <div class="hero-text">
-                <h1>Audrey</h1>
-                <p>EXPLORER</p>
-                <div style="margin-top: 20px;">
-                    <span style="background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 5px; font-size: 12px;">Base：大湾区</span>
-                </div>
-            </div>
-        </div>
+        </header>
 
-        <section id="education">
-        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 教育背景</h2>
-        <div class="experience-item">
-            <div class="experience-header">
-                <h3>四川农业大学</h3>
-                <span class="date">2022 - 2026</span>
-            </div>
-            <span class="company">本科：广告学 ｜ GPA: 3.83/4.0</span>
-            <p style="color: var(--text-dim);">专业课程：市场营销、用户研究、消费者行为学、战略品牌管理、市场调查与统计、新媒体、广告文案、广告效果调查、广告经营与管理</p>
-        </div>
-    </section>
+        <section>
+            <h2 class="section-title">Hello</h2>
+            <p class="content-text">
+                I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University, a 211 institution, and also exploring specific future development directions.
+                
+                I have academic experience in User Research, Market Investigation, Consumer Behavior, Brand Strategy Management, Marketing, Advertising Copywriting, Advertising Effectiveness Research, and Advertising Operations and Management.
+            </p>
+        </section>
 
-    <section id="experience">
-        <h2 class="section-title"><i class="fas fa-briefcase"></i> 实习经验</h2>
-        <div class="experience-item">
-            <div class="experience-header">
-                <h3>用户发展组--用户运营</h3>
-                <span class="date">2025.07 - 2025.01</span>
-            </div>
-            <span class="company">品牌星球</span>
-            <p style="color: var(--text-dim);">【客咨管理与数据分析】周均处理 50 条B端合作咨询并标准化管理CRM系统，期间数据有效性提升 200%；周期性分析数据变化形成 12 份趋势简报、4 份数据分析报告；
-            【B2B商务对接与策划】参与 B2B 合作会议（含议价、权益、年框、bundle方案等商议），负责制作 14 份会议 memo并起草策划 10 次。</p>
-        <div class="experience-header">
-                <h3>品牌传播部--品牌传播</h3>
-                <span class="date">2025.01 - 2025.04</span>
-            </div>
-            <span class="company">Impact Hub Shanghai</span>
-            <p style="color: var(--text-dim);">【竞对分析与策略优化】针对选题缺乏数据支持的问题，分析 7 个对标账号的内容结构与互动策略，输出《传播优化方案》定位市场空白；
-            【方法沉淀与效率提升】针对新项目内容质量不稳定的问题，协助策划 2 个新内容栏目并沉淀配套 SOP，提升内容输出效率 30%，确保不同传播触点上的一致呈现；
-            【内容生产与数据增长】负责品牌调研及信息提炼，共产出7篇文章，运营期间粉丝数增长33%（690-920），单篇数据最高提升 6 倍。</p>
-        </div>
-    </section>
-
-        <section id="life">
-            <h2 class="section-title"><i class="fas fa-heart"></i> 生活方式</h2>
-            <div class="life-grid">
-                <div class="life-card">
-                    <i class="fas fa-camera"></i>
-                    <h3>CITY WALK</h3>
-                    <p style="color: var(--text-dim); font-size: 14px;">记录。</p>
-                </div>
-                <div class="life-card">
-                    <i class="fas fa-plane"></i>
-                    <h3>SOLO TRIP</h3>
-                    <p style="color: var(--text-dim); font-size: 14px;">前往 3 个国家及地区旅行，具备跨文化交流与在地文化发掘力。</p>
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="entry">
+                <div class="entry-date">2022 — 2026</div>
+                <div class="entry-details">
+                    <h3>Sichuan Agricultural University</h3>
+                    <p class="entry-sub">School of Arts and Media - Advertising</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <div class="contact-box">
-                <h2>CONTACT</h2>
-                <p>Find Me:</p>
-                <div class="social-links">
-                    <a href="mailto:15182555061@163.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/allaboutAudrey"><i class="fab fa-github"></i></a>
-                        <i class="fab fa-github"></i> 关注 GitHub    
-                    </a>
-                    <p style="margin-top: 20px; font-size: 12px; color: #b2bec3;">
-                        © 2026 Audrey. Built with ❤️ on GitHub Pages.
-                    </p>
-                </footer>
+        <section>
+            <h2 class="section-title">Internship Experience</h2>
+            <div class="entry">
+                <div class="entry-date">2015 — 2017</div>
+                <div class="entry-details">
+                    <h3>Junior Designer at Creative Co <i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    <p class="entry-sub">Atlanta, GA</p>
+                    
+                    <div class="work-gallery">
+                        <div class="gallery-item"><img src="images/work1.jpg" alt="Work"></div>
+                        <div class="gallery-item"><img src="images/work2.jpg" alt="Work"></div>
+                        <div class="gallery-item"><img src="images/work3.jpg" alt="Work"></div>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Project Experience</h2>
+            <div class="entry">
+                <div class="entry-date">2014 — 2015</div>
+                <div class="entry-details">
+                    <h3>Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></h3>
+                    <p class="entry-sub">Atlanta, GA</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Side Projects</h2>
+            <a href="#" class="link-item">
+                <span>Nature walks</span>
+                <span>2021 <i class="fas fa-arrow-up-right-from-square"></i></span>
+            </a>
+            <a href="#" class="link-item">
+                <span>Plant-based cookware</span>
+                <span>2020 <i class="fas fa-arrow-up-right-from-square"></i></span>
+            </a>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <a href="#" class="link-item"><span>Threads</span><span>username <i class="fas fa-arrow-right"></i></span></a>
+            <a href="#" class="link-item"><span>Figma</span><span>username <i class="fas fa-arrow-right"></i></span></a>
+            <a href="#" class="link-item"><span>X</span><span>username <i class="fas fa-arrow-right"></i></span></a>
         </section>
 
     </div>
