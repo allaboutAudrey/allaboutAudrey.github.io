@@ -11,13 +11,12 @@
     
     <style>
         :root {
-            --bg-color: #afbe8c; /* 你的主题绿 */
+            --bg-color: #afbe8c; 
             --text-main: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --text-light: #f5f5f7;
+            --text-secondary: #3d3d3d; /* 加深了一点，确保可读性 */
+            --text-light: #555555;     /* 修复：原先是白色，会导致文字看不见，现在改为深灰 */
             --accent-color: #007AFF;
             --content-width: 1100px;
-            /* 新增：侧边栏大标题背景色 */
             --side-bg: #d6cbb4; 
         }
 
@@ -36,78 +35,75 @@
             margin: 0 auto;
         }
 
-        /* --- 侧边栏标题优化 --- */
+        /* --- 侧边栏标题 --- */
         .side-label {
-            width: 130px; /* 稍微增加宽度以容纳背景 */
+            width: 150px; /* 稍微调宽，防止 Experience 换行 */
             flex-shrink: 0;
         }
 
         .side-label h2 {
-            font-size: 32px;
+            font-size: 28px; /* 稍微缩小一点，更精致 */
             font-weight: 800;
             position: sticky;
             top: 40px;
             letter-spacing: -1px;
-            /* 重点修改：添加背景样式 */
             background-color: var(--side-bg);
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 12px;
-            display: inline-block; /* 让背景包裹文字长度 */
-            backdrop-filter: blur(5px); /* 毛玻璃效果 */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-transform: uppercase; /* 增加专业感 */
         }
 
         /* --- 基础样式 --- */
-        .highlight-text { color: #860914; font-weight: 500; }
-        
-        .highlight {
-            background: #decdd5;
-            padding: 0 4px;
-            border-radius: 6px;
-        }
+        .highlight-text { color: #860914; font-weight: 600; }
+        .highlight { background: #decdd5; padding: 0 4px; border-radius: 6px; }
 
         header {
             display: flex;
             align-items: center;
             gap: 32px;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
 
         .profile-pic {
             width: 120px; height: 120px;
             border-radius: 50%; object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 3px solid rgba(255,255,255,0.3);
         }
 
         .header-info h1 { font-size: 42px; font-weight: 700; letter-spacing: -1.5px; }
+        .header-location { color: var(--text-secondary); font-size: 14px; margin-top: 8px; }
 
         .main-section {
             display: flex;
             gap: 60px;
-            margin-bottom: 120px;
+            margin-bottom: 100px;
             align-items: flex-start;
         }
 
         .content-area { flex: 1; min-width: 0; }
         .sub-section { margin-bottom: 60px; }
-        .sub-title { font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+        .sub-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; }
 
         /* --- 技能标签 --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
         }
+        .skill-category h4 { font-size: 13px; color: #555; margin-bottom: 10px; text-transform: uppercase; }
         .tag {
-            white-space: nowrap;
-            background: rgba(255,255,255,0.9);
-            padding: 6px 14px;
-            border-radius: 8px;
+            display: inline-block;
+            background: rgba(255,255,255,0.8);
+            padding: 4px 12px;
+            border-radius: 6px;
             font-size: 13px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin: 0 4px 8px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
         }
         
-        /* --- 作品集与图片 --- */
+        /* --- 作品集 --- */
         .work-gallery { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -119,28 +115,32 @@
             background: #eee;
             border-radius: 12px;
             overflow: hidden;
-            cursor: zoom-in;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .award-rank { background: #decdd5; color: #1a1a1a; padding: 4px 10px; border-radius: 4px; font-weight: 600; }
+        /* --- 经历条目 --- */
+        .entry { margin-bottom: 30px; }
+        .entry-header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 4px; }
+        .entry-date { color: var(--text-light); font-size: 14px; }
+        .entry-sub { color: var(--text-secondary); font-size: 15px; margin-bottom: 8px; }
+        .entry-description li { list-style: none; padding-left: 15px; position: relative; color: var(--text-secondary); font-size: 15px; }
+        .entry-description li::before { content: "•"; position: absolute; left: 0; color: var(--side-bg); }
 
         @media (max-width: 900px) {
-            .main-section { flex-direction: column; gap: 40px; }
+            .main-section { flex-direction: column; gap: 30px; }
+            .side-label { width: 100%; }
             .side-label h2 { position: static; }
         }
     </style>
 </head>
 <body>
 
-    
 <div class="page-container">
-    
     <header>
         <img src="images/avatar.jpg" alt="Audrey Xu" class="profile-pic">
         <div class="header-info">
@@ -156,8 +156,7 @@
             <div class="sub-section">
                 <h3 class="sub-title">Who Am I?</h3>
                 <p class="content-text">
-                    Hello!<br>
-                    I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University <span class="highlight-text">(211)</span>. 
+                    Hello! I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University <span class="highlight-text">(211)</span>. 
                     <br><br>
                     I have a total of one year of internship experience in <span class="highlight-text">brand communication (ToC), user operation and research (ToB), and B2B business.</span>
                 </p>
@@ -170,40 +169,16 @@
                         <h4>Data & Coding</h4>
                         <div class="skill-tags">
                             <span class="tag">SQL</span><span class="tag">Excel</span>
-                            <span class="tag">Vibe Coding</span><span class="tag">Figma (Prototyping)</span>
+                            <span class="tag">Vibe Coding</span><span class="tag">Figma</span>
                         </div>
                     </div>
                     <div class="skill-category">
                         <h4>Design</h4>
                         <div class="skill-tags">
-                            <span class="tag">Figma</span><span class="tag">Canvas</span>
-                            <span class="tag">Keynote</span><span class="tag">Photoshop</span>
+                            <span class="tag">Figma</span><span class="tag">PS</span>
+                            <span class="tag">Keynote</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h4>AI Tools</h4>
-                        <div class="skill-tags">
-                            <span class="tag">ChatGPT</span><span class="tag">Gemini</span>
-                            <span class="tag">Cursor</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Knowledge Base & Management</h4>
-                        <div class="skill-tags">
-                            <span class="tag">Notion</span><span class="tag">Feishu</span>
-                            <span class="tag">CRM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sub-section">
-                <h3 class="sub-title">Awards</h3>
-                <div class="award-list">
-                    <div class="award-item"><span>第16届全国大广赛平面设计</span><span class="award-rank">三等奖</span></div>
-                    <div class="award-item"><span>中西部大学生新媒体大赛</span><span class="award-rank">三等奖</span></div>
-                    <div class="award-item"><span>第33届时报金犊奖</span><span class="award-rank">二等奖</span></div>
-                    <div class="award-item"><span>四川省雷波杯农业创意设计大赛</span><span class="award-rank">一等奖</span></div>
                 </div>
             </div>
         </div>
@@ -213,17 +188,6 @@
         <div class="side-label"><h2>Experience</h2></div>
         <div class="content-area">
             <div class="sub-section">
-                <h3 class="sub-title">Education</h3>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Sichuan Agricultural University</span>
-                        <span class="entry-date">2022 — 2026</span>
-                    </div>
-                    <p class="entry-sub">School of Arts and Media - Advertising<br>GPA: 3.83/4.0 | IELTS: overall 7.0</p>
-                </div>
-            </div>
-
-            <div class="sub-section">
                 <h3 class="sub-title">Internship</h3>
                 <div class="entry">
                     <div class="entry-header">
@@ -232,109 +196,73 @@
                     </div>
                     <p class="entry-sub">Guangzhou</p>
                     <ul class="entry-description">
-                        <li>负责</li>
-                        <li>参与</li>
+                        <li>负责内容运营与品牌传播策划</li>
                     </ul>
                 </div>
                 <div class="entry">
                     <div class="entry-header">
-                        <span class="entry-title">Impact Hub Shanghai<i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.01 — 2025.04</span>
+                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <span class="entry-date">2025.07 — 2026.01</span>
                     </div>
-                    <p class="entry-sub">Remote</p>
+                    <p class="entry-sub">Guangzhou</p>
                     <ul class="entry-description">
-                        <li>负责</li>
-                        <li>参与</li>
+                        <li>负责内容运营与品牌传播策划</li>
                     </ul>
-                </div>
                 </div>
                 <div class="entry">
                     <div class="entry-header">
-                        <span class="entry-title">Impact Hub Shanghai<i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.01 — 2025.04</span>
+                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <span class="entry-date">2025.07 — 2026.01</span>
                     </div>
-                    <p class="entry-sub">Remote</p>
+                    <p class="entry-sub">Guangzhou</p>
                     <ul class="entry-description">
-                        <li>负责</li>
-                        <li>参与</li>
+                        <li>负责内容运营与品牌传播策划</li>
                     </ul>
                 </div>
             </div>
 
             <div class="sub-section">
-                <h3 class="sub-title">Project</h3>
+                <h3 class="sub-title">Side Projects</h3>
                 <div class="entry">
                     <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
+                        <span class="entry-title">Freelance Photographer</span>
                     </div>
-                    <ul class="entry-description">
-                        <li>负责</li>
-                        <li>参与</li>
-                    </ul>
-                </div>
-                 <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>负责</li>
-                        <li>参与</li>
-                    </ul>
-                </div>
-                 <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>负责</li>
-                        <li>负责</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="sub-section">
-            <h3 class="sub-title">Side Projects</h3>
-            <div class="entry">
-                <div class="entry-header">
-                    <span class="entry-title">Freelance Photographer</span>
-                    <span class="entry-date">2021</span>
-                </div>
-                
-                <div class="work-gallery">
-                    <div class="gallery-item">
-                        <a href="images/nature1.jpg" data-fancybox="gallery" data-caption="Photography Work 01">
-                            <img src="images/nature1.jpg" alt="Work 1">
-                        </a>
-                    </div>
-                    <div class="gallery-item">
-                        <a href="images/nature2.jpg" data-fancybox="gallery" data-caption="Photography Work 02">
-                            <img src="images/nature2.jpg" alt="Work 2">
-                        </a>
-                    </div>
-                    <div class="gallery-item">
-                        <a href="images/nature3.jpg" data-fancybox="gallery" data-caption="Photography Work 03">
-                            <img src="images/nature3.jpg" alt="Work 3">
-                        </a>
+                    
+                    <div class="work-gallery">
+                        <div class="gallery-item">
+                            <a href="images/nature1.jpg" data-fancybox="gallery" data-caption="Photography Collection - 01">
+                                <img src="images/nature1.jpg" alt="Work 1">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="images/nature2.jpg" data-fancybox="gallery" data-caption="Photography Collection - 02">
+                                <img src="images/nature2.jpg" alt="Work 2">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="images/nature3.jpg" data-fancybox="gallery" data-caption="Photography Collection - 03">
+                                <img src="images/nature3.jpg" alt="Work 3">
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-    <div class="main-section">
-        <div class="side-label"><h2>Contact</h2></div>
-        <div class="content-area">
-            <div class="contact-grid">
-                <a href="#" class="link-item"><span>Threads</span><span>@username</span></a>
-                <a href="#" class="link-item"><span>Figma</span><span>@username</span></a>
-                <a href="#" class="link-item"><span>Email</span><span>yourname@email.com</span></a>
             </div>
         </div>
     </div>
-
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    // 关键：初始化点击图片打开作品集的功能
+    Fancybox.bind("[data-fancybox]", {
+        // 这里可以配置是否显示下载按钮、全屏按钮等
+        Toolbar: {
+            display: {
+                right: ["iterateZoom", "slideshow", "fullScreen", "download", "thumbs", "close"],
+            },
+        },
+    });
+</script>
 
 </body>
 </html>
