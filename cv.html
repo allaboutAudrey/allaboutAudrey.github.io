@@ -18,19 +18,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-         /* 定义一个名为 'highlight-text' 的类 */
-        .highlight-text {
-            color: #0477b4;       /* 这里换成你想要的颜色，比如蓝色 */
-            font-weight: 500;      /* 没有加粗 */
-        }
-    
-        .highlight {
-            background: linear-gradient(120deg, #ae8087 0%, #ae8087 100%); /* 浅红色背景 */
-            font-weight: 500;      /* 没有加粗 */
-            color: #1a1a1a;        /* 文字颜色不变 */
-            padding: 0 4px;        /* 左右留一点呼吸感 */
-            border-radius: 8px;    /* 微小的圆角 */
-        }
+        .highlight-text { color: #0477b4; font-weight: 500; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -45,7 +33,6 @@
             margin: 0 auto;
         }
 
-        /* Header 样式 */
         header {
             display: flex;
             align-items: center;
@@ -63,14 +50,13 @@
         .header-tagline { font-size: 18px; color: var(--text-secondary); margin-top: 4px; }
         .header-location { font-size: 14px; color: var(--text-light); margin-top: 8px; }
 
-        /* Jeff Su 风格分栏布局 */
         .main-section {
             display: flex;
             gap: 80px;
             margin-bottom: 120px;
+            align-items: flex-start; /* 确保标题对齐顶部 */
         }
 
-        /* 左侧：固定的大标题栏 */
         .side-label {
             width: 160px;
             flex-shrink: 0;
@@ -84,10 +70,18 @@
             letter-spacing: -1px;
         }
 
-        /* 技能网格：在右侧区域内再次分栏 */
+        .content-area {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sub-section { margin-bottom: 60px; }
+        .sub-title { font-size: 24px; font-weight: 700; margin-bottom: 20px; color: var(--text-main); }
+        .content-text { font-size: 17px; color: var(--text-secondary); }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 内部两列排列，非常丰满 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 22px;
             width: 100%;
         }
@@ -100,46 +94,17 @@
             letter-spacing: 1px;
         }
         
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap; /* 自动换行，防止撑破容器 */
-            gap: 8px;
-        }
-        
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     
         .tag {
-        white-space: nowrap;
-        background: #f5f5f7;
-        padding: 5px 10px;
-        border-radius: 6px;
-        font-size: 13px;
-        }
-            
-        /* 适配手机端：技能网格变单列 */
-        @media (max-width: 600px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* 右侧：详细内容区 */
-        .content-area {
-           flex: 1; /* 这行非常关键，让它占据右侧所有剩余空间 */
-           min-width: 0;
+            white-space: nowrap;
+            background: #fff; /* 浅色背景在深色底色上更清晰 */
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        .sub-section { margin-bottom: 60px; }
-
-        .sub-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .content-text { font-size: 17px; color: var(--text-secondary); }
-
-        /* 经历项样式 */
         .entry { margin-bottom: 40px; }
         .entry-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
         .entry-title { font-size: 19px; font-weight: 600; }
@@ -155,27 +120,24 @@
             content: "—"; position: absolute; left: 0; color: var(--text-light);
         }
 
-        /* 奖项标签样式 */
         .award-list { display: flex; flex-direction: column; gap: 12px; }
         .award-item {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 0; border-bottom: 1px solid #f5f5f7;
+            padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .award-rank { font-size: 12px; font-weight: 700; color: #1a1a1a; background: #0477b4; padding: 4px 10px; border-radius: 4px; }
+        .award-rank { font-size: 12px; font-weight: 700; color: #fff; background: #0477b4; padding: 4px 10px; border-radius: 4px; }
 
-        /* 画廊样式 */
         .work-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
-        .gallery-item { aspect-ratio: 4/3; background: #f9f9f9; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
+        .gallery-item { aspect-ratio: 4/3; background: #eee; border-radius: 12px; overflow: hidden; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 联系方式布局 */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .link-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #f5f5f7; text-decoration: none; color: var(--text-main); }
+        .link-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none; color: var(--text-main); }
 
         @media (max-width: 900px) {
             .main-section { flex-direction: column; gap: 40px; }
             .side-label { width: 100%; }
-            .side-label h2 { position: static; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -187,67 +149,70 @@
         <img src="images/avatar.jpg" alt="Audrey Xu" class="profile-pic">
         <div class="header-info">
             <h1>Audrey Xu</h1>
-            <div class="header-tagline">Try, Learn, Practice, Progress a little, Repeat </div>
-            <div class="header-location"><i class="fas fa-location-dot"></i>Greater Bay Area (Guangzhou｜Shenzhen｜Hongkong)</div>
+            <div class="header-tagline">Try, Learn, Practice, Progress a little, Repeat</div>
+            <div class="header-location"><i class="fas fa-location-dot"></i> Greater Bay Area (Guangzhou｜Shenzhen｜Hong Kong)</div>
         </div>
     </header>
 
-    <div class="content-area">
-           
     <div class="main-section">
         <div class="side-label"><h2>About</h2></div>
         <div class="content-area">
             <div class="sub-section">
                 <h3 class="sub-title">Who Am I?</h3>
                 <p class="content-text">
-                    Hello
-                    <br>I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University<span class="highlight-text">(211)</span>, and also exploring specific future development directions.
-                    <br><br>I have a total of one year of internship experience in <span class="highlight-text">brand communication(ToC), user operation and research(ToB) and B2B business.</span>.
+                    Hello!<br>
+                    I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University <span class="highlight-text">(211)</span>. 
+                    <br><br>
+                    I have a total of one year of internship experience in <span class="highlight-text">brand communication (ToC), user operation and research (ToB), and B2B business.</span>
                 </p>
             </div>
 
-    <div class="sub-section">
-        <h3 class="sub-title">What Can I Do?</h3>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h4>Data & Coding</h4>
-                <div class="skill-tags">
-                    <span class="tag">SQL</span><span class="tag">Excel</span>
-                    <span class="tag">Vibe Coding</span><span class="tag">Figma (Prototyping)</span>
+            <div class="sub-section">
+                <h3 class="sub-title">What Can I Do?</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Data & Coding</h4>
+                        <div class="skill-tags">
+                            <span class="tag">SQL</span><span class="tag">Excel</span>
+                            <span class="tag">Vibe Coding</span><span class="tag">Figma (Prototyping)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Design</h4>
+                        <div class="skill-tags">
+                            <span class="tag">Figma</span><span class="tag">Canvas</span>
+                            <span class="tag">Keynote</span><span class="tag">Photoshop</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>AI Tools</h4>
+                        <div class="skill-tags">
+                            <span class="tag">ChatGPT</span><span class="tag">Gemini</span>
+                            <span class="tag">Cursor</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Management</h4>
+                        <div class="skill-tags">
+                            <span class="tag">Notion</span><span class="tag">Feishu</span>
+                            <span class="tag">CRM</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-category">
-                <h4>Design</h4>
-                <div class="skill-tags">
-                    <span class="tag">Figma</span><span class="tag">Canvas</span>
-                    <span class="tag">Keynote</span><span class="tag">Photoshop</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h4>AI Tools</h4>
-                <div class="skill-tags">
-                    <span class="tag">ChatGPT</span><span class="tag">Gemini</span>
-                    <span class="tag">Cursor</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h4>Management</h4>
-                <div class="skill-tags">
-                    <span class="tag">Notion</span><span class="tag">Feishu</span>
-                    <span class="tag">CRM</span>
+
+            <div class="sub-section">
+                <h3 class="sub-title">Awards</h3>
+                <div class="award-list">
+                    <div class="award-item"><span>第16届全国大广赛平面设计</span><span class="award-rank">三等奖</span></div>
+                    <div class="award-item"><span>中西部大学生新媒体大赛</span><span class="award-rank">三等奖</span></div>
+                    <div class="award-item"><span>第33届时报金犊奖</span><span class="award-rank">二等奖</span></div>
+                    <div class="award-item"><span>四川省雷波杯农业创意设计大赛</span><span class="award-rank">一等奖</span></div>
                 </div>
             </div>
         </div>
-    </div> <div class="sub-section">
-        <h3 class="sub-title">Awards</h3>
-        <div class="award-list">
-            <div class="award-item"><span>第16届全国大广赛平面设计</span><span class="award-rank">三等奖</span></div>
-            <div class="award-item"><span>中西部大学生新媒体大赛</span><span class="award-rank">三等奖</span></div>
-            <div class="award-item"><span>第33届时报金犊奖</span><span class="award-rank">二等奖</span></div>
-            <div class="award-item"><span>四川省雷波杯农业创意设计大赛</span><span class="award-rank">一等奖</span></div>
-        </div>
-    </div> 
-</div> 
+    </div>
+
     <div class="main-section">
         <div class="side-label"><h2>Experience</h2></div>
         <div class="content-area">
@@ -258,28 +223,12 @@
                         <span class="entry-title">Sichuan Agricultural University</span>
                         <span class="entry-date">2022 — 2026</span>
                     </div>
-                    <p class="entry-sub">School of Arts and Media - Advertising
-                    <br>GPA: 3.83/4.0
-                    <br>IELTS: overall 7.0
-                    </p>
+                    <p class="entry-sub">School of Arts and Media - Advertising<br>GPA: 3.83/4.0 | IELTS: overall 7.0</p>
                 </div>
             </div>
+
             <div class="sub-section">
                 <h3 class="sub-title">Internship</h3>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.07 — 2026.01</span>
-                    </div>
-                    <p class="entry-sub">Shanghai, China</p>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.07 — 2026.01</span>
-                    </div>
-                    <p class="entry-sub">Shanghai, China</p>
-                </div>
                 <div class="entry">
                     <div class="entry-header">
                         <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
@@ -297,34 +246,8 @@
                         <span class="entry-date">2024.11 — Present</span>
                     </div>
                     <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
+                        <li>负责品牌视觉系统的调研与分析。</li>
+                        <li>参与 5 个以上社交媒体营销项目的创意构思。</li>
                     </ul>
                 </div>
             </div>
@@ -355,5 +278,6 @@
     </div>
 
 </div>
+
 </body>
 </html>
