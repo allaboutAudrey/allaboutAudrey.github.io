@@ -5,41 +5,353 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Audrey Xu</title>
 
-  <!-- Google Fonts（可随时替换） -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Dela+Gothic+One&family=DM+Mono&family=Young+Serif&family=Kirang+Haerang&family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --bg-color: #e7f4f6;
+      --card-bg: #e2e2d8;
+      --text-color: #1f1f1f;
+      --subtext-color: #555;
+      --accent-color: #9c3b2f;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f1315;
+      --card-bg: #1c1f22;
+      --text-color: #f2f2f2;
+      --subtext-color: #aaa;
+      --accent-color: #d96a5f;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --subtext-color: #b5b5b5;
+      --accent-color: #ff6b5c;
+      --card-bg: #1e1e1e;
+      --tag-bg: #2a2a2a;
+    }
+
+    /* ========== FONTS PLACEHOLDER ==========
+    Titles: 'Dela Gothic One'
+    Subtitles: 'Young Serif'
+    Mono / Decorative: 'DM Mono', 'Kirang Haerang', 'Special Elite'
+    Replace font-family once downloaded
+    ===================================== */
+
+    /* ========== GLOBAL ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-color);
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .hero.hide {
+      opacity: 0;
+      transform: translateY(-40px);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      font-family: 'Dela Gothic One', sans-serif;
+      font-size: 2.6rem;
+      text-align: center;
+    }
+
+    .site-content {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .site-content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 32px 120px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+    }
+
+    .name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--subtext-color);
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--subtext-color);
+    }
+
+    /* ========== THEME TOGGLE ========== */
+    .theme-toggle {
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .theme-toggle button {
+      border: none;
+      background: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--subtext-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .theme-toggle button.active {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section-group {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      column-gap: 64px;
+      margin-bottom: 120px;
+    }
+
+    .section-title {
+      font-family: 'Dela Gothic One', sans-serif;
+      font-size: 1.7rem;
+      color: var(--accent-color);
+      position: sticky;
+      top: 140px;
+      align-self: flex-start;
+    }
+
+    .section-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .section-content h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--accent-color);
+    }
+
+    p {
+      max-width: 720px;
+      color: var(--subtext-color);
+    }
+
+    @media (max-width: 768px) {
+      .section-group {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        margin-bottom: 16px;
+      }
+    }
+
+    /* ========== SKILLS ========== */
+    .skill-group {
+      margin-bottom: 32px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      font-size: 0.85rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .container {
+        padding: 32px 20px 80px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
-<body>
+<body data-theme="light">\n  <div class="hero" id="hero">\n    <h1 class="hero-text">My name is Audrey<br/>and it is really nice to meet you</h1>\n  </div>\n  <div class="site-content" id="siteContent">
+  <div class="container">
+    <header>
+      <div class="profile">
+        <div class="avatar"></div>
+        <div>
+          <div class="name" style="font-family:'Dela Gothic One',sans-serif;">Audrey Xu</div>
+          <div class="tagline">Try, learn, practice, progress a little, repeat.</div>
+          <div class="location">Greater Bay Area (Guangzhou / Shenzhen / Hongkong)</div>
+        </div>
+      </div>
 
-  <!-- ABOUT -->
-  <section class="two-column">
-    <div class="left sticky">
-      <h2 class="section-title">about</h2>
-    </div>
+      <div class="theme-toggle">
+        <button id="darkBtn">Dark</button>
+        <button id="lightBtn" class="active">Light</button>
+      </div>
+    </header>
 
-    <div class="right">
-      <div class="card">
-        <h3 class="card-title">Who am I?</h3>
-        <p class="card-text">
-          I am Audrey, curious about the world, people, and myself.
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>Who Am I?</h3>
+        <p>
+          Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
+          <br /><br />
+          I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EXPERIENCE -->
-  <section class="two-column">
-    <div class="left sticky">
-      <h2 class="section-title">experience</h2>
-    </div>
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>What Can I Do?</h3>
 
-    <div class="right">
-      <div class="card mono">
-        Education · Internship · Side Projects
+        <div class="skill-group">
+          <h4>Data Processing & Visualization</h4>
+          <div class="tags">
+            <div class="tag">SQL</div>
+            <div class="tag">Excel</div>
+            <div class="tag">Power BI</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Knowledge Base Management</h4>
+          <div class="tags">
+            <div class="tag">Notion</div>
+            <div class="tag">Feishu</div>
+            <div class="tag">Cursor</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Design</h4>
+          <div class="tags">
+            <div class="tag">Figma</div>
+            <div class="tag">Canva</div>
+            <div class="tag">Photoshop</div>
+            <div class="tag">Vibe Coding</div>
+            <div class="tag">Prototyping</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</body>
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>What Do I Like?</h3>
+      </div>
+    </section>
+
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>Awards</h3>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const body = document.body;
+    const darkBtn = document.getElementById('darkBtn');
+    const lightBtn = document.getElementById('lightBtn');
+
+    darkBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'dark');
+      darkBtn.classList.add('active');
+      lightBtn.classList.remove('active');
+    });
+
+    lightBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'light');
+      lightBtn.classList.add('active');
+      darkBtn.classList.remove('active');
+    });
+  </script>
+  </div>\n  <script>\n    const hero = document.getElementById('hero');\n    const content = document.getElementById('siteContent');\n    window.addEventListener('scroll', () => {\n      if (window.scrollY > window.innerHeight * 0.3) {\n        hero.classList.add('hide');\n        content.classList.add('show');\n      }\n    });\n  </script>\n</body>
 </html>
