@@ -95,9 +95,28 @@
     }
 
     .hero-text {
-      font-family: 'Dela Gothic One', sans-serif;
+      font-family: var(--font-title);
       font-size: 2.6rem;
       text-align: center;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+      animation: heroPop 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes heroPop {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.01);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .site-content {
@@ -180,34 +199,38 @@
     /* ========== SECTIONS ========== */
     .section-group {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      column-gap: 64px;
+      grid-template-columns: 180px 1fr;
+      column-gap: 26px; /* 二级标题更靠近大标题（约原来的 1/3） */ /* 缩小一级标题与内容区间距 */
       margin-bottom: 120px;
+    }
     }
 
     .section-title {
       font-family: var(--font-title);
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: var(--accent-color);
       position: sticky;
       top: 140px;
       align-self: flex-start;
       letter-spacing: 0.5px;
     }
+    }
 
     .section-content h3 {
       font-family: var(--font-title);
-      font-size: 1.35rem;
-      margin-bottom: 16px;
+      font-size: 1.45rem; /* 略小于一级标题 */
+      margin-bottom: 10px;
+    } /* 缩小二级标题下方间距 */
+    }
     }
 
     .section-content h4 {
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
+      font-family: var(--font-serif); /* What Can I Do 下同级文本 */
+      font-size: 1.15rem; /* 小于二级标题 */
       margin-bottom: 8px;
       color: var(--accent-color);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.02em;
+    }
     }
 
     p {
@@ -252,13 +275,48 @@
       color: #fff;
     }
 
+    /* ========== AWARDS ALIGNMENT ========== */
+    .awards-list {
+      display: grid;
+      row-gap: 10px;
+      max-width: 760px;
+      margin-top: 8px;
+      font-family: var(--font-serif);
+      color: var(--subtext-color);
+    }
+
+    .award-row {
+      display: grid;
+      grid-template-columns: 1fr 120px; /* 左：比赛名，右：奖项对齐 */
+      column-gap: 16px;
+    }
+
+    .award-rank {
+      text-align: right;
+      white-space: nowrap;
+    }
+
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
+      .section-group {
+        grid-template-columns: 1fr;
       }
+
+      .section-title {
+        margin-bottom: 16px;
+        position: relative;
+        top: 0;
+      }
+
+      .award-row {
+        grid-template-columns: 1fr; /* 移动端自然换行 */
+      }
+
+      .award-rank {
+        text-align: left;
+        font-size: 0.9rem;
+      }
+    }
 
       .container {
         padding: 32px 20px 80px;
@@ -333,9 +391,13 @@
           </div>
         </div>
 
-        <h3 style="margin-top:48px;">What Do I Like?</h3>
-
-        <h3 style="margin-top:48px;">Awards</h3>
+        <<h3 style="margin-top:32px;">Awards</h3>
+        <div class="awards-list">
+          <div class="award-row"><span class="award-name">National Advertising Art Competition for College Students (16th)</span><span class="award-rank">Third Prize</span></div>
+          <div class="award-row"><span class="award-name">New Media Competition for Western and Central University Students</span><span class="award-rank">Third Prize</span></div>
+          <div class="award-row"><span class="award-name">Times Young Creative Award (33rd)</span><span class="award-rank">Second Prize</span></div>
+          <div class="award-row"><span class="award-name">Sichuan Province Leibo Cup Agricultural Creative Design Competition</span><span class="award-rank">First Prize</span></div>
+        </div>
       </div>
     </section>
 
@@ -346,61 +408,72 @@
         <div style="margin-bottom:64px;">
           <h3>Education</h3>
           <p style="font-family:var(--font-serif);">
-            Undergraduate · 2022–2026<br/>
-            Advertising, Sichuan Agricultural University (211)
+            <strong>Undergraduate</strong><br/>
+            2022–2026<br/>
+            Sichuan Agricultural University | School of Arts and Media – Advertising<br/><br/>
+            <strong>Course</strong><br/>
+            GPA: 3.83 / 4.0<br/>
+            User Research | Consumer Behavior | Marketing | Strategic Brand Management<br/>
+            Market Investigation and Statistics | Advertising Operations and Management<br/><br/>
+            <strong>Language</strong><br/>
+            IELTS: overall 7.0
           </p>
         </div>
 
         <div style="margin-bottom:64px;">
           <h3>Internship</h3>
           <p style="font-family:var(--font-serif);">
-            Brand Communication / User Research / ToB Operations<br/>
-            Details remain exactly as designed in the prototype.
+            <strong>Brandstar</strong>
+            <br/>User Operations (B2B Business)<br/>
+            2025.07 — 2026.01 · Guangzhou, China<br/><br/>
+
+            <strong>Impact Hub Shanghai</strong>
+            <br/>Brand Communication (ToC)<br/>
+            2025.01 — 2025.04 · Remote, China<br/><br/>
+
+            <strong>Mianyang City Cultural, Radio, Television and Tourism Bureau</strong>
+            <br/>Administrative<br/>
+            2024.07 — 2024.09 · Mianyang, China
           </p>
         </div>
 
         <div style="margin-bottom:64px;">
           <h3>Side Project</h3>
           <p style="font-family:var(--font-serif);">
-            Independent projects and explorations.<br/>
-            Content structure preserved for later completion.
+            <strong>Freelance Photographer</strong>
+            <br/>2023 — Now<br/><br/>
+            <strong>Running a business – Campus catering operations and marketing</strong>
+            <br/>2023.04
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ========== MOST PERSONAL SECTION ========== -->
-    <section class="section-group">
-      <div class="section-title">Most Personal<br/>Section</div>
-      <div class="section-content">
-        <h3 style="font-family:var(--font-decorative-1); font-size:1.6rem;">Things I Care About</h3>
-        <p style="font-family:var(--font-serif); max-width:640px;">
-          Curiosity, long-term thinking, and building things that quietly last.
-          <br/><br/>
-          I value clarity over noise, depth over speed, and progress that compounds.
-        </p>
-
-        <h3 style="margin-top:72px; font-family:var(--font-decorative-2);">How I Think</h3>
-        <p style="font-family:var(--font-serif); max-width:640px;">
-          I observe first, question assumptions, and enjoy connecting dots across disciplines.
-        </p>
-
-        <h3 style="margin-top:72px; font-family:var(--font-decorative-1);">Outside of Work</h3>
-        <p style="font-family:var(--font-serif); max-width:640px;">
-          Reading, walking, documenting thoughts, and noticing small, ordinary moments.
-        </p>
-      </div>
-    </section>
+    <!-- ========== MOST PERSONAL SECTION (IMAGE PLACEHOLDER) ========== -->
+    <div style="
+      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+    ">
+      <img
+        src="images/most-personal-placeholder.jpg"
+        alt="Most Personal Section Preview"
+        style="
+          width: 100%;
+          max-width: 960px;
+          display: block;
+          pointer-events: none;
+          user-select: none;
+        "
+      />
+    </div>
 
     <!-- ========== CONTACT SECTION ========== -->
-    <section class="section-group">
-      <div class="section-title">Contact</div>
-      <div class="section-content">
-        <p style="font-family:var(--font-mono); font-size:1rem;">
-          <a href="mailto:audreyxu@example.com" style="text-decoration:underline;">audreyxu@example.com</a>
-        </p>
-      </div>
-    </section>
+    <footer style="margin-top:160px; text-align:center;">
+      <p style="font-family:var(--font-mono); font-size:1rem;">
+        <a href="mailto:15182555061@163.com" style="text-decoration:underline;">audreyxu@example.com</a>
+      </p>
+    </footer>
   </div>
 
   <script>
@@ -433,3 +506,4 @@
   </script>
 </body>
 </html>
+
