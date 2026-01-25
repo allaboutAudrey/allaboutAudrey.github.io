@@ -1,372 +1,273 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey Xu | Personal Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f3e9d9;
-            --text-main: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --text-light: #999999;
-            --accent-color: #007AFF;
-            --content-width: 1100px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audrey Xu</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-         /* 定义一个名为 'highlight-text' 的类 */
-        .highlight-text {
-            color: #0477b4;       /* 这里换成你想要的颜色，比如蓝色 */
-            font-weight: 500;      /* 没有加粗 */
-        }
-    
-        .highlight {
-            background: linear-gradient(120deg, #ae8087 0%, #ae8087 100%); /* 浅红色背景 */
-            font-weight: 500;      /* 没有加粗 */
-            color: #1a1a1a;        /* 文字颜色不变 */
-            padding: 0 4px;        /* 左右留一点呼吸感 */
-            border-radius: 8px;    /* 微小的圆角 */
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding: 80px 40px;
-        }
+  <style>
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --bg-color: #f4eaea;
+      --text-color: #2b1c1c;
+      --subtext-color: #6b4a4a;
+      --accent-color: #b03a2e;
+      --card-bg: #ecdcdc;
+      --tag-bg: #e6d1d1;
+    }
 
-        .page-container {
-            max-width: var(--content-width);
-            margin: 0 auto;
-        }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --subtext-color: #b5b5b5;
+      --accent-color: #ff6b5c;
+      --card-bg: #1e1e1e;
+      --tag-bg: #2a2a2a;
+    }
 
-        /* Header 样式 */
-        header {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-bottom: 100px;
-        }
+    /* ========== GLOBAL ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .profile-pic {
-            width: 120px; height: 120px;
-            border-radius: 50%; object-fit: cover;
-            border: 1px solid #eee;
-        }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-        .header-info h1 { font-size: 42px; font-weight: 700; letter-spacing: -1.5px; }
-        .header-tagline { font-size: 18px; color: var(--text-secondary); margin-top: 4px; }
-        .header-location { font-size: 14px; color: var(--text-light); margin-top: 8px; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* Jeff Su 风格分栏布局 */
-        .main-section {
-            display: flex;
-            gap: 80px;
-            margin-bottom: 120px;
-        }
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 32px 120px;
+    }
 
-        /* 左侧：固定的大标题栏 */
-        .side-label {
-            width: 180px;
-            flex-shrink: 0;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 72px;
+    }
 
-        .side-label h2 {
-            font-size: 36px;
-            font-weight: 800;
-            position: sticky;
-            top: 40px;
-            letter-spacing: -1px;
-        }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
 
-        /* 技能网格：在右侧区域内再次分栏 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 内部两列排列，非常丰满 */
-            gap: 22px;
-            width: 100%;
-        }
-        
-        .skill-category h4 {
-            font-size: 14px;
-            color: #999;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap; /* 自动换行，防止撑破容器 */
-            gap: 8px;
-        }
-        
-    
-        .tag {
-        white-space: nowrap;
-        background: #f5f5f7;
-        padding: 5px 10px;
-        border-radius: 6px;
-        font-size: 13px;
-        }
-            
-        /* 适配手机端：技能网格变单列 */
-        @media (max-width: 600px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* 右侧：详细内容区 */
-        .content-area {
-           flex: 1; /* 这行非常关键，让它占据右侧所有剩余空间 */
-           min-width: 0;
-        }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+    }
 
-        .sub-section { margin-bottom: 60px; }
+    .name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
 
-        .sub-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
+    .tagline {
+      font-size: 1rem;
+      color: var(--subtext-color);
+    }
 
-        .content-text { font-size: 17px; color: var(--text-secondary); }
+    .location {
+      font-size: 0.9rem;
+      color: var(--subtext-color);
+    }
 
-        /* 经历项样式 */
-        .entry { margin-bottom: 40px; }
-        .entry-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-        .entry-title { font-size: 19px; font-weight: 600; }
-        .entry-date { font-size: 14px; color: var(--text-light); }
-        .entry-sub { font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; }
+    /* ========== THEME TOGGLE ========== */
+    .theme-toggle {
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
 
-        .entry-description { list-style: none; }
-        .entry-description li {
-            font-size: 15px; color: var(--text-secondary);
-            margin-bottom: 8px; position: relative; padding-left: 20px;
-        }
-        .entry-description li::before {
-            content: "—"; position: absolute; left: 0; color: var(--text-light);
-        }
+    .theme-toggle button {
+      border: none;
+      background: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--subtext-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-        /* 奖项标签样式 */
-        .award-list { display: flex; flex-direction: column; gap: 12px; }
-        .award-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 0; border-bottom: 1px solid #f5f5f7;
-        }
-        .award-rank { font-size: 12px; font-weight: 700; color: #1a1a1a; background: #0477b4; padding: 4px 10px; border-radius: 4px; }
+    .theme-toggle button.active {
+      background: var(--accent-color);
+      color: #fff;
+    }
 
-        /* 画廊样式 */
-        .work-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
-        .gallery-item { aspect-ratio: 4/3; background: #f9f9f9; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    /* ========== SECTIONS ========== */
+    section {
+      margin-bottom: 96px;
+    }
 
-        /* 联系方式布局 */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .link-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #f5f5f7; text-decoration: none; color: var(--text-main); }
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
 
-        @media (max-width: 900px) {
-            .main-section { flex-direction: column; gap: 40px; }
-            .side-label { width: 100%; }
-            .side-label h2 { position: static; }
-        }
-    </style>
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--accent-color);
+    }
+
+    p {
+      max-width: 720px;
+      color: var(--subtext-color);
+    }
+
+    /* ========== SKILLS ========== */
+    .skill-group {
+      margin-bottom: 32px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      font-size: 0.85rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .container {
+        padding: 32px 20px 80px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
-<body>
-
-<div class="page-container">
-    
+<body data-theme="light">
+  <div class="container">
     <header>
-        <img src="images/avatar.jpg" alt="Audrey Xu" class="profile-pic">
-        <div class="header-info">
-            <h1>Audrey Xu</h1>
-            <div class="header-tagline">Try, Learn, Practice, Progress a little, Repeat </div>
-            <div class="header-location"><i class="fas fa-location-dot"></i>Greater Bay Area (Guangzhou｜Shenzhen｜Hongkong)</div>
+      <div class="profile">
+        <div class="avatar"></div>
+        <div>
+          <div class="name">Audrey Xu</div>
+          <div class="tagline">Try, learn, practice, progress a little, repeat.</div>
+          <div class="location">Greater Bay Area (Guangzhou / Shenzhen / Hongkong)</div>
         </div>
+      </div>
+
+      <div class="theme-toggle">
+        <button id="darkBtn">Dark</button>
+        <button id="lightBtn" class="active">Light</button>
+      </div>
     </header>
 
-    <div class="main-section">
-        <div class="side-label"><h2>About</h2></div>
-        <div class="content-area">
-            <div class="sub-section">
-                <h3 class="sub-title">Who Am I?</h3>
-                <p class="content-text">
-                    Hello
-                    <br>I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University<span class="highlight-text">(211)</span>, and also exploring specific future development directions.
-                    <br><br>I have a total of one year of internship experience in <span class="highlight-text">brand communication(ToC), user operation and research(ToB) and B2B business.</span>.
-                </p>
-            </div>
-         
-<div class="content-area">
+    <section>
+      <h2>About</h2>
+      <h3>Who Am I?</h3>
+      <p>
+        Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
+        <br /><br />
+        I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
+      </p>
+    </section>
 
-    <div class="sub-section">
-        <h3 class="sub-title">What Can I Do?</h3>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h4>Data & Coding</h4>
-                <div class="skill-tags">
-                    <span class="tag">SQL</span><span class="tag">Excel</span>
-                    <span class="tag">Vibe Coding</span><span class="tag">Figma (Prototyping)</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h4>Design</h4>
-                <div class="skill-tags">
-                    <span class="tag">Figma</span><span class="tag">Canvas</span>
-                    <span class="tag">Keynote</span><span class="tag">Photoshop</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h4>AI Tools</h4>
-                <div class="skill-tags">
-                    <span class="tag">ChatGPT</span><span class="tag">Gemini</span>
-                    <span class="tag">Cursor</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h4>Management</h4>
-                <div class="skill-tags">
-                    <span class="tag">Notion</span><span class="tag">Feishu</span>
-                    <span class="tag">CRM</span>
-                </div>
-            </div>
+    <section>
+      <h2>What Can I Do?</h2>
+
+      <div class="skill-group">
+        <h3>Data Processing & Visualization</h3>
+        <div class="tags">
+          <div class="tag">SQL</div>
+          <div class="tag">Excel</div>
+          <div class="tag">Power BI</div>
         </div>
-    </div> <div class="sub-section">
-        <h3 class="sub-title">Awards</h3>
-        <div class="award-list">
-            <div class="award-item"><span>第16届全国大广赛平面设计</span><span class="award-rank">三等奖</span></div>
-            <div class="award-item"><span>中西部大学生新媒体大赛</span><span class="award-rank">三等奖</span></div>
-            <div class="award-item"><span>第33届时报金犊奖</span><span class="award-rank">二等奖</span></div>
-            <div class="award-item"><span>四川省雷波杯农业创意设计大赛</span><span class="award-rank">一等奖</span></div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Knowledge Base Management</h3>
+        <div class="tags">
+          <div class="tag">Notion</div>
+          <div class="tag">Feishu</div>
+          <div class="tag">Cursor</div>
         </div>
-    </div> 
-</div>
-           
-    <div class="main-section">
-        <div class="side-label"><h2>Experience</h2></div>
-        <div class="content-area">
-            <div class="sub-section">
-                <h3 class="sub-title">Education</h3>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Sichuan Agricultural University</span>
-                        <span class="entry-date">2022 — 2026</span>
-                    </div>
-                    <p class="entry-sub">School of Arts and Media - Advertising
-                    <br>GPA: 3.83/4.0
-                    <br>IELTS: overall 7.0
-                    </p>
-                </div>
-            </div>
-            <div class="sub-section">
-                <h3 class="sub-title">Internship</h3>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.07 — 2026.01</span>
-                    </div>
-                    <p class="entry-sub">Shanghai, China</p>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.07 — 2026.01</span>
-                    </div>
-                    <p class="entry-sub">Shanghai, China</p>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Brandstar <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2025.07 — 2026.01</span>
-                    </div>
-                    <p class="entry-sub">Shanghai, China</p>
-                </div>
-            </div>
+      </div>
 
-            <div class="sub-section">
-                <h3 class="sub-title">Project</h3>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-                <div class="entry">
-                    <div class="entry-header">
-                        <span class="entry-title">Intern at Design Hub <i class="fas fa-arrow-up-right-from-square"></i></span>
-                        <span class="entry-date">2024.11 — Present</span>
-                    </div>
-                    <ul class="entry-description">
-                        <li>这里替换成你具体的工作内容描述，就像我们上一轮修改的那样。</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="sub-section">
-                <h3 class="sub-title">Side Projects</h3>
-                <div class="entry">
-                    <div class="entry-header"><span class="entry-title">Photography</span><span class="entry-date">2021</span></div>
-                    <div class="work-gallery">
-                        <div class="gallery-item"><img src="images/nature1.jpg"></div>
-                        <div class="gallery-item"><img src="images/nature2.jpg"></div>
-                        <div class="gallery-item"><img src="images/nature3.jpg"></div>
-                    </div>
-                </div>
-            </div>
+      <div class="skill-group">
+        <h3>Design</h3>
+        <div class="tags">
+          <div class="tag">Figma</div>
+          <div class="tag">Canva</div>
+          <div class="tag">Photoshop</div>
+          <div class="tag">Vibe Coding</div>
+          <div class="tag">Prototyping</div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div class="main-section">
-        <div class="side-label"><h2>Contact</h2></div>
-        <div class="content-area">
-            <div class="contact-grid">
-                <a href="#" class="link-item"><span>Threads</span><span>@username</span></a>
-                <a href="#" class="link-item"><span>Figma</span><span>@username</span></a>
-                <a href="#" class="link-item"><span>Email</span><span>yourname@email.com</span></a>
-            </div>
-        </div>
-    </div>
+    <section>
+      <h2>What Do I Like?</h2>
+    </section>
 
-</div>
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-<script>
-    // 关键：初始化点击图片打开作品集的功能
-    Fancybox.bind("[data-fancybox]", {
-        // 这里可以配置是否显示下载按钮、全屏按钮等
-        Toolbar: {
-            display: {
-                right: ["iterateZoom", "slideshow", "fullScreen", "download", "thumbs", "close"],
-            },
-        },
+    <section>
+      <h2>Awards</h2>
+    </section>
+  </div>
+
+  <script>
+    const body = document.body;
+    const darkBtn = document.getElementById('darkBtn');
+    const lightBtn = document.getElementById('lightBtn');
+
+    darkBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'dark');
+      darkBtn.classList.add('active');
+      lightBtn.classList.remove('active');
     });
-</script>
+
+    lightBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'light');
+      lightBtn.classList.add('active');
+      darkBtn.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
