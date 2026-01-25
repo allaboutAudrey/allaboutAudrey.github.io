@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  
   <style>
     /* ========== CSS VARIABLES ========== */
     :root {
@@ -131,10 +131,12 @@
     }
 
     /* ========== LAYOUT ========== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 32px 120px;
+    .section-full {
+    width: 100vw;
+    min-height: 100vh;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    box-sizing: border-box;
     }
 
     header {
@@ -391,7 +393,7 @@
           </div>
         </div>
 
-        <<h3 style="margin-top:32px;">Awards</h3>
+        <h3 style="margin-top:32px;">Awards</h3>
         <div class="awards-list">
           <div class="award-row"><span class="award-name">National Advertising Art Competition for College Students (16th)</span><span class="award-rank">Third Prize</span></div>
           <div class="award-row"><span class="award-name">New Media Competition for Western and Central University Students</span><span class="award-rank">Third Prize</span></div>
@@ -469,41 +471,23 @@
     </div>
 
     <!-- ========== CONTACT SECTION ========== -->
-    <footer style="margin-top:160px; text-align:center;">
-      <p style="font-family:var(--font-mono); font-size:1rem;">
-        <a href="mailto:15182555061@163.com" style="text-decoration:underline;">audreyxu@example.com</a>
-      </p>
-    </footer>
-  </div>
+  <footer>
+  <a href="mailto:audreyxu@example.com">audreyxu@example.com</a>
+</footer>
 
-  <script>
-    const body = document.body;
-    const darkBtn = document.getElementById('darkBtn');
-    const lightBtn = document.getElementById('lightBtn');
+</div>
+</div>
 
-    darkBtn.addEventListener('click', () => {
-      body.setAttribute('data-theme', 'dark');
-      darkBtn.classList.add('active');
-      lightBtn.classList.remove('active');
-    });
+<script>
+const hero = document.getElementById('hero');
+const content = document.getElementById('siteContent');
+window.addEventListener('scroll', () => {
+  if (scrollY > innerHeight * .3) {
+    hero.classList.add('hide');
+    content.classList.add('show');
+  }
+});
+</script>
 
-    lightBtn.addEventListener('click', () => {
-      body.setAttribute('data-theme', 'light');
-      lightBtn.classList.add('active');
-      darkBtn.classList.remove('active');
-    });
-  </script>
-  </div>
-  <script>
-    const hero = document.getElementById('hero');
-    const content = document.getElementById('siteContent');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > window.innerHeight * 0.3) {
-        hero.classList.add('hide');
-        content.classList.add('show');
-      }
-    });
-  </script>
 </body>
 </html>
-
