@@ -5,151 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Audrey Xu</title>
 
-  <!-- Google Fonts -->
-  <!-- 主标题 / 大标题 -->
-  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-  <!-- 设计感 / 辅助字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Young+Serif&family=Kirang+Haerang&family=Special+Elite&display=swap" rel="stylesheet">
-  <!-- 正文字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts（可随时替换） -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Dela+Gothic+One&family=DM+Mono&family=Young+Serif&family=Kirang+Haerang&family=Special+Elite&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      /* ===== Color System (可替换) ===== */
-      --bg-main: #dff1f3;          /* 页面主背景 */
-      --bg-card: #e6e6e1;          /* 卡片背景 */
-      --text-main: #1a1a1a;
-      --accent: #c45a3c;
-
-      /* ===== Font System (可直接替换字体名) ===== */
-      --font-body: 'Inter', sans-serif;
-      --font-title: 'Dela Gothic One', cursive;
-      --font-mono: 'DM Mono', monospace;
-      --font-serif: 'Young Serif', serif;
-      --font-hand: 'Kirang Haerang', cursive;
-      --font-type: 'Special Elite', cursive;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-body);
-      font-weight: 300;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-
-    /* ===== HERO / LANDING ===== */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .hero h1 {
-      font-family: var(--font-title);
-      font-size: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    /* ===== LAYOUT ===== */
-    .section {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 3rem;
-      padding: 6rem 8vw;
-    }
-
-    .sticky-title {
-      position: sticky;
-      top: 4rem;
-      height: fit-content;
-      font-family: var(--font-title);
-      font-size: 1.2rem;
-      text-transform: lowercase;
-    }
-
-    .card {
-      background-color: var(--bg-card);
-      padding: 3rem;
-      border-radius: 12px;
-    }
-
-    /* ===== TYPOGRAPHY EXAMPLES ===== */
-    .mono { font-family: var(--font-mono); }
-    .serif { font-family: var(--font-serif); }
-    .hand { font-family: var(--font-hand); }
-    .type { font-family: var(--font-type); }
-
-    /* ===== CONTACT ===== */
-    .contact {
-      padding: 6rem 8vw;
-      text-align: center;
-    }
-
-    .contact a {
-      color: var(--text-main);
-      text-decoration: none;
-      border-bottom: 1px solid currentColor;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .section {
-        grid-template-columns: 1fr;
-      }
-
-      .sticky-title {
-        position: relative;
-        top: auto;
-        margin-bottom: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>My name is Audrey<br>and it is really nice to meet you</h1>
-  </section>
-
   <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="sticky-title">about</div>
-    <div class="card">
-      <p class="serif">Who am I?</p>
-      <p>I am Audrey, curious about the world, people, and myself.</p>
+  <section class="two-column">
+    <div class="left sticky">
+      <h2 class="section-title">about</h2>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <h3 class="card-title">Who am I?</h3>
+        <p class="card-text">
+          I am Audrey, curious about the world, people, and myself.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="sticky-title">experience</div>
-    <div class="card">
-      <p class="mono">Education · Internship · Side Projects</p>
+  <section class="two-column">
+    <div class="left sticky">
+      <h2 class="section-title">experience</h2>
     </div>
-  </section>
 
-  <!-- MOST PERSONAL SECTION -->
-  <section class="section" id="personal">
-    <div class="sticky-title">most personal section</div>
-    <div class="card">
-      <p class="type">Truth About Me</p>
+    <div class="right">
+      <div class="card mono">
+        Education · Internship · Side Projects
+      </div>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact">
-    <p>Contact</p>
-    <p><a href="mailto:15182555061@163.com">15182555061@163.com</a></p>
   </section>
 
 </body>
