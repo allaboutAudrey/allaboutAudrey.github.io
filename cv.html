@@ -499,14 +499,38 @@
       </div>
     </section>
 
-    <!-- ========== MOST PERSONAL SECTION (IMAGE PLACEHOLDER) ========== -->
-    <section class="most-personal">
-      <img
-      src="images/most-personal.svg"
-      alt="Most Personal Section"
-      class="most-personal-img"
-    />
-    </section>
+   <!-- ========== MOST PERSONAL SECTION (SPLIT IMAGE VERSION) ========== -->
+<div
+  class="most-personal-wrapper"
+  style="
+    margin-top: 10px;
+    width: 100%;
+  "
+>
+  <img
+    src="images/most-personal-top.svg"
+    alt="Most Personal Section Top"
+    style="
+      width: 100%;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    "
+  />
+
+  <img
+    src="images/most-personal-bottom.svg"
+    alt="Most Personal Section Bottom"
+    style="
+      width: 100%;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      margin-top: -1px; /* 防止拼接缝 */
+    "
+  />
+</div>
+
 
     <!-- ========== CONTACT SECTION ========== -->
     <footer style="margin-top:120px; text-align:center;">
