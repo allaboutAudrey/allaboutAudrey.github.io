@@ -117,24 +117,44 @@
     }
 
     /* ========== SECTIONS ========== */
-    section {
+    .section-group {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      column-gap: 64px;
       margin-bottom: 96px;
     }
 
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 24px;
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      padding-top: 6px;
     }
 
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
+    .section-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .section-content h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
       color: var(--accent-color);
     }
 
     p {
       max-width: 720px;
       color: var(--subtext-color);
+    }
+
+    @media (max-width: 768px) {
+      .section-group {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        margin-bottom: 16px;
+      }
     }
 
     /* ========== SKILLS ========== */
@@ -200,55 +220,66 @@
       </div>
     </header>
 
-    <section>
-      <h2>About</h2>
-      <h3>Who Am I?</h3>
-      <p>
-        Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
-        <br /><br />
-        I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
-      </p>
-    </section>
-
-    <section>
-      <h2>What Can I Do?</h2>
-
-      <div class="skill-group">
-        <h3>Data Processing & Visualization</h3>
-        <div class="tags">
-          <div class="tag">SQL</div>
-          <div class="tag">Excel</div>
-          <div class="tag">Power BI</div>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Knowledge Base Management</h3>
-        <div class="tags">
-          <div class="tag">Notion</div>
-          <div class="tag">Feishu</div>
-          <div class="tag">Cursor</div>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Design</h3>
-        <div class="tags">
-          <div class="tag">Figma</div>
-          <div class="tag">Canva</div>
-          <div class="tag">Photoshop</div>
-          <div class="tag">Vibe Coding</div>
-          <div class="tag">Prototyping</div>
-        </div>
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>Who Am I?</h3>
+        <p>
+          Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
+          <br /><br />
+          I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
+        </p>
       </div>
     </section>
 
-    <section>
-      <h2>What Do I Like?</h2>
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>What Can I Do?</h3>
+
+        <div class="skill-group">
+          <h4>Data Processing & Visualization</h4>
+          <div class="tags">
+            <div class="tag">SQL</div>
+            <div class="tag">Excel</div>
+            <div class="tag">Power BI</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Knowledge Base Management</h4>
+          <div class="tags">
+            <div class="tag">Notion</div>
+            <div class="tag">Feishu</div>
+            <div class="tag">Cursor</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Design</h4>
+          <div class="tags">
+            <div class="tag">Figma</div>
+            <div class="tag">Canva</div>
+            <div class="tag">Photoshop</div>
+            <div class="tag">Vibe Coding</div>
+            <div class="tag">Prototyping</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Awards</h2>
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>What Do I Like?</h3>
+      </div>
+    </section>
+
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>Awards</h3>
+      </div>
     </section>
   </div>
 
