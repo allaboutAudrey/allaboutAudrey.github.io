@@ -233,6 +233,13 @@
     }
     }
 
+      .about-clamp {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;   /* 控制显示几行：2 / 3 / 4 */
+      overflow: hidden;
+    } 
+
     .section-content h4 {
       font-family: var(--font-serif); /* What Can I Do 下同级文本 */
       font-size: 1.15rem; /* 小于二级标题 */
@@ -376,11 +383,14 @@
       <div class="section-title">About</div>
       <div class="section-content">
         <h3>Who Am I?</h3>
-        <p>
-          Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
-          <br /><br />
-          I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
-        </p>
+       <p class="about-clamp">
+        Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
+      </p>
+      
+      <p class="about-clamp">
+        I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
+      </p>
+
 
         <h3 style="margin-top:48px;">What Can I Do?</h3>
 
