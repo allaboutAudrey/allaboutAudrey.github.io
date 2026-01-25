@@ -5,32 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Audrey Xu</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <!-- 主标题 / 大标题 -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <!-- 设计感 / 辅助字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Young+Serif&family=Kirang+Haerang&family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- 正文字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    /* ========== CSS VARIABLES ========== */
     :root {
-      --bg-color: #f4eaea;
-      --text-color: #2b1c1c;
-      --subtext-color: #6b4a4a;
-      --accent-color: #b03a2e;
-      --card-bg: #ecdcdc;
-      --tag-bg: #e6d1d1;
+      /* ===== Color System (可替换) ===== */
+      --bg-main: #dff1f3;          /* 页面主背景 */
+      --bg-card: #e6e6e1;          /* 卡片背景 */
+      --text-main: #1a1a1a;
+      --accent: #c45a3c;
+
+      /* ===== Font System (可直接替换字体名) ===== */
+      --font-body: 'Inter', sans-serif;
+      --font-title: 'Dela Gothic One', cursive;
+      --font-mono: 'DM Mono', monospace;
+      --font-serif: 'Young Serif', serif;
+      --font-hand: 'Kirang Haerang', cursive;
+      --font-type: 'Special Elite', cursive;
     }
 
-    [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f5f5f5;
-      --subtext-color: #b5b5b5;
-      --accent-color: #ff6b5c;
-      --card-bg: #1e1e1e;
-      --tag-bg: #2a2a2a;
-    }
-
-    /* ========== GLOBAL ========== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -38,270 +37,120 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: var(--font-body);
+      font-weight: 300;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ========== LAYOUT ========== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 32px 120px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 72px;
-    }
-
-    .profile {
+    /* ===== HERO / LANDING ===== */
+    .hero {
+      height: 100vh;
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
     }
 
-    .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background-color: var(--card-bg);
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5vw, 3.5rem);
     }
 
-    .name {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--accent-color);
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: var(--subtext-color);
-    }
-
-    .location {
-      font-size: 0.9rem;
-      color: var(--subtext-color);
-    }
-
-    /* ========== THEME TOGGLE ========== */
-    .theme-toggle {
-      display: flex;
-      background: var(--card-bg);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .theme-toggle button {
-      border: none;
-      background: none;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      color: var(--subtext-color);
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .theme-toggle button.active {
-      background: var(--accent-color);
-      color: #fff;
-    }
-
-    /* ========== SECTIONS ========== */
-    .section-group {
+    /* ===== LAYOUT ===== */
+    .section {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      column-gap: 64px;
-      margin-bottom: 96px;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 6rem 8vw;
     }
 
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--accent-color);
-      padding-top: 6px;
+    .sticky-title {
       position: sticky;
-      top: 120px;
-      align-self: flex-start;
+      top: 4rem;
+      height: fit-content;
+      font-family: var(--font-title);
+      font-size: 1.2rem;
+      text-transform: lowercase;
     }
 
-    .section-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 16px;
+    .card {
+      background-color: var(--bg-card);
+      padding: 3rem;
+      border-radius: 12px;
     }
 
-    .section-content h4 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-      color: var(--accent-color);
+    /* ===== TYPOGRAPHY EXAMPLES ===== */
+    .mono { font-family: var(--font-mono); }
+    .serif { font-family: var(--font-serif); }
+    .hand { font-family: var(--font-hand); }
+    .type { font-family: var(--font-type); }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: 6rem 8vw;
+      text-align: center;
     }
 
-    p {
-      max-width: 720px;
-      color: var(--subtext-color);
+    .contact a {
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .section-group {
+      .section {
         grid-template-columns: 1fr;
       }
 
-      .section-title {
-        margin-bottom: 16px;
-      }
-    }
-
-    /* ========== SKILLS ========== */
-    .skill-group {
-      margin-bottom: 32px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .tag {
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: var(--tag-bg);
-      font-size: 0.85rem;
-      transition: transform 0.2s ease, background 0.2s ease;
-      cursor: default;
-    }
-
-    .tag:hover {
-      transform: translateY(-2px) scale(1.03);
-      background: var(--accent-color);
-      color: #fff;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-
-      .container {
-        padding: 32px 20px 80px;
-      }
-
-      .name {
-        font-size: 1.8rem;
+      .sticky-title {
+        position: relative;
+        top: auto;
+        margin-bottom: 1.5rem;
       }
     }
   </style>
 </head>
-<body data-theme="light">
-  <div class="container">
-    <header>
-      <div class="profile">
-        <div class="avatar"></div>
-        <div>
-          <div class="name">Audrey Xu</div>
-          <div class="tagline">Try, learn, practice, progress a little, repeat.</div>
-          <div class="location">Greater Bay Area (Guangzhou / Shenzhen / Hongkong)</div>
-        </div>
-      </div>
+<body>
 
-      <div class="theme-toggle">
-        <button id="darkBtn">Dark</button>
-        <button id="lightBtn" class="active">Light</button>
-      </div>
-    </header>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>My name is Audrey<br>and it is really nice to meet you</h1>
+  </section>
 
-    <section class="section-group">
-      <div class="section-title">About</div>
-      <div class="section-content">
-        <h3>Who Am I?</h3>
-        <p>
-          Hello. I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211), and exploring specific future development directions.
-          <br /><br />
-          I have one year of internship experience in brand communication (ToC), user operation and research (ToB), and B2B business.
-        </p>
-      </div>
-    </section>
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="sticky-title">about</div>
+    <div class="card">
+      <p class="serif">Who am I?</p>
+      <p>I am Audrey, curious about the world, people, and myself.</p>
+    </div>
+  </section>
 
-    <section class="section-group">
-      <div class="section-title">About</div>
-      <div class="section-content">
-        <h3>What Can I Do?</h3>
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="sticky-title">experience</div>
+    <div class="card">
+      <p class="mono">Education · Internship · Side Projects</p>
+    </div>
+  </section>
 
-        <div class="skill-group">
-          <h4>Data Processing & Visualization</h4>
-          <div class="tags">
-            <div class="tag">SQL</div>
-            <div class="tag">Excel</div>
-            <div class="tag">Power BI</div>
-          </div>
-        </div>
+  <!-- MOST PERSONAL SECTION -->
+  <section class="section" id="personal">
+    <div class="sticky-title">most personal section</div>
+    <div class="card">
+      <p class="type">Truth About Me</p>
+    </div>
+  </section>
 
-        <div class="skill-group">
-          <h4>Knowledge Base Management</h4>
-          <div class="tags">
-            <div class="tag">Notion</div>
-            <div class="tag">Feishu</div>
-            <div class="tag">Cursor</div>
-          </div>
-        </div>
+  <!-- CONTACT -->
+  <section class="contact">
+    <p>Contact</p>
+    <p><a href="mailto:15182555061@163.com">15182555061@163.com</a></p>
+  </section>
 
-        <div class="skill-group">
-          <h4>Design</h4>
-          <div class="tags">
-            <div class="tag">Figma</div>
-            <div class="tag">Canva</div>
-            <div class="tag">Photoshop</div>
-            <div class="tag">Vibe Coding</div>
-            <div class="tag">Prototyping</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-group">
-      <div class="section-title">About</div>
-      <div class="section-content">
-        <h3>What Do I Like?</h3>
-      </div>
-    </section>
-
-    <section class="section-group">
-      <div class="section-title">About</div>
-      <div class="section-content">
-        <h3>Awards</h3>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    const body = document.body;
-    const darkBtn = document.getElementById('darkBtn');
-    const lightBtn = document.getElementById('lightBtn');
-
-    darkBtn.addEventListener('click', () => {
-      body.setAttribute('data-theme', 'dark');
-      darkBtn.classList.add('active');
-      lightBtn.classList.remove('active');
-    });
-
-    lightBtn.addEventListener('click', () => {
-      body.setAttribute('data-theme', 'light');
-      lightBtn.classList.add('active');
-      darkBtn.classList.remove('active');
-    });
-  </script>
 </body>
 </html>
