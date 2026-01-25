@@ -13,11 +13,21 @@
   <style>
     /* ========== CSS VARIABLES ========== */
     :root {
+      /* ========== COLOR SYSTEM ========== */
       --bg-color: #e7f4f6;
       --card-bg: #e2e2d8;
       --text-color: #1f1f1f;
       --subtext-color: #555;
       --accent-color: #9c3b2f;
+      --tag-bg: #d9d9cf;
+
+      /* ========== FONT SYSTEM (EDITABLE) ========== */
+      --font-title: 'Dela Gothic One', sans-serif; /* 一级 / 二级标题 */
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; /* 正文 */
+      --font-serif: 'Young Serif', serif; /* 叙事型文本 */
+      --font-mono: 'DM Mono', monospace; /* 技术 / 注释 */
+      --font-decorative-1: 'Kirang Haerang', cursive; /* 个性化强调 */
+      --font-decorative-2: 'Special Elite', cursive; /* 复古打字机感 */
     }
 
     [data-theme="dark"] {
@@ -52,7 +62,7 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-body);
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
@@ -176,23 +186,28 @@
     }
 
     .section-title {
-      font-family: 'Dela Gothic One', sans-serif;
+      font-family: var(--font-title);
       font-size: 1.7rem;
       color: var(--accent-color);
       position: sticky;
       top: 140px;
       align-self: flex-start;
+      letter-spacing: 0.5px;
     }
 
     .section-content h3 {
-      font-size: 1.4rem;
+      font-family: var(--font-title);
+      font-size: 1.35rem;
       margin-bottom: 16px;
     }
 
     .section-content h4 {
-      font-size: 1.05rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
       margin-bottom: 8px;
       color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     p {
@@ -328,22 +343,51 @@
     <section class="section-group">
       <div class="section-title">Experience</div>
       <div class="section-content">
-        <h3>Education</h3>
+        <div style="margin-bottom:64px;">
+          <h3>Education</h3>
+          <p style="font-family:var(--font-serif);">
+            Undergraduate · 2022–2026<br/>
+            Advertising, Sichuan Agricultural University (211)
+          </p>
+        </div>
+
+        <div style="margin-bottom:64px;">
+          <h3>Internship</h3>
+          <p style="font-family:var(--font-serif);">
+            Brand Communication / User Research / ToB Operations<br/>
+            Details remain exactly as designed in the prototype.
+          </p>
+        </div>
+
+        <div style="margin-bottom:64px;">
+          <h3>Side Project</h3>
+          <p style="font-family:var(--font-serif);">
+            Independent projects and explorations.<br/>
+            Content structure preserved for later completion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MOST PERSONAL SECTION ========== -->
+    <section class="section-group">
+      <div class="section-title">Most Personal<br/>Section</div>
+      <div class="section-content">
+        <h3>Things I Care About</h3>
         <p>
-          Undergraduate · 2022–2026<br/>
-          Advertising, Sichuan Agricultural University (211)
+          This section is intentionally personal and expressive.
+          <br/><br/>
+          Layout is flexible. Content is narrative-driven rather than structured like a resume.
         </p>
 
-        <h3 style="margin-top:48px;">Internship</h3>
+        <h3 style="margin-top:56px;">How I Think</h3>
         <p>
-          Brand Communication / User Research / ToB Operations<br/>
-          Details remain exactly as designed in the prototype.
+          Reflections, values, biases, and the way I observe the world.
         </p>
 
-        <h3 style="margin-top:48px;">Side Project</h3>
+        <h3 style="margin-top:56px;">Outside of Work</h3>
         <p>
-          Independent projects and explorations.<br/>
-          Content structure preserved for later completion.
+          Interests, habits, and moments that shape who I am.
         </p>
       </div>
     </section>
