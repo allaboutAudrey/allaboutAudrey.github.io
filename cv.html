@@ -25,7 +25,6 @@
       --font-title: 'Dela Gothic One', sans-serif; /* 一级 / 二级标题 */
       --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; /* 正文 */
       --font-serif: 'Young Serif', serif; /* 叙事型文本 */
-      --font-mono: 'DM Mono', monospace; /* 技术 / 注释 */
       --font-decorative-1: 'Kirang Haerang', cursive; /* 个性化强调 */
       --font-decorative-2: 'Special Elite', cursive; /* 复古打字机感 */
     }
@@ -50,7 +49,7 @@
     /* ========== FONTS PLACEHOLDER ==========
     Titles: 'Dela Gothic One'
     Subtitles: 'Young Serif'
-    Mono / Decorative: 'DM Mono', 'Kirang Haerang', 'Special Elite'
+    Decorative: 'Kirang Haerang', 'Special Elite'
     Replace font-family once downloaded
     ===================================== */
 
@@ -98,7 +97,7 @@
       font-family: var(--font-title);
       font-size: 2.6rem;
       text-align: center;
-      line-height: 1.3;
+      line-height: 1.4;
       opacity: 0;
       transform: translateY(12px) scale(0.98);
       animation: heroPop 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -187,7 +186,7 @@
     }
 
     .tagline {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: var(--subtext-color);
     }
 
@@ -223,14 +222,14 @@
     .section-group {
       display: grid;
       grid-template-columns: 180px 1fr;
-      column-gap: 26px; /* 二级标题更靠近大标题（约原来的 1/3） */ /* 缩小一级标题与内容区间距 */
-      margin-bottom: 120px;
+      column-gap: 36px; /* 二级标题更靠近大标题（约原来的 1/3） */ /* 缩小一级标题与内容区间距 */
+      margin-: 120px;
     }
     }
 
     .section-title {
       font-family: var(--font-title);
-      font-size: 1.8rem;
+      font-size: 2.4rem;
       color: var(-accent-color);
       position: sticky;
       top: 140px;
@@ -241,7 +240,7 @@
 
     .section-content h3 {
       font-family: var(--font-title);
-      font-size: 1.45rem; /* 略小于一级标题 */
+      font-size: 1.8rem; /* 略小于一级标题 */
       margin-bottom: 10px;
     } /* 缩小二级标题下方间距 */
     }
@@ -256,9 +255,9 @@
 
     .section-content h4 {
       font-family: var(--font-serif); /* What Can I Do 下同级文本 */
-      font-size: 1.15rem; /* 小于二级标题 */
+      font-size: 1.3rem; /* 小于二级标题 */
       margin-bottom: 8px;
-      color: var(--accent-color);
+      color: var(--text-color);
       letter-spacing: 0.02em;
     }
     }
@@ -396,9 +395,8 @@
     <section class="section-group">
       <div class="section-title">About</div>
       <div class="section-content">
-        <h3>Who Am I?</h3>
+        <h3>Hello</h3>
        <p class="about-clamp">
-        Hello. <br/>
          I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211),<br/>
          and exploring specific future development directions.<br/>
          <br/>
@@ -410,7 +408,7 @@
       </p>
 
 
-        <h3 style="margin-top:48px;">What Can I Do?</h3>
+        <h3 style="margin-top:48px;">Abilities</h3>
 
         <div class="skill-group">
           <h4>Data Processing & Visualization</h4>
@@ -457,7 +455,7 @@
       <div class="section-content">
         <div style="margin-bottom:48px;">
           <h3>Education</h3>
-          <p style="font-family:var(--font-serif);">
+          <p style="font-family:var(--font-title);">
             <strong>Undergraduate</strong><br/>
             2022–2026<br/>
             Sichuan Agricultural University | School of Arts and Media – Advertising<br/><br/>
@@ -472,7 +470,7 @@
 
         <div style="margin-bottom:48px;">
           <h3>Internship</h3>
-          <p style="font-family:var(--font-serif);">
+          <p style="font-family:var(--font-title);">
             <strong>Brandstar</strong>
             <br/>User Operations (B2B Business)<br/>
             2025.07 — 2026.01 · Guangzhou, China<br/><br/>
@@ -487,9 +485,9 @@
           </p>
         </div>
 
-        <div style="margin-bottom:48px;">
+        <div style="margin-bottom:10px;">
           <h3>Side Project</h3>
-          <p style="font-family:var(--font-serif);">
+          <p style="font-family:var(--font-title);">
             <strong>Freelance Photographer</strong>
             <br/>2023 — Now<br/><br/>
             <strong>Running a business – Campus catering operations and marketing</strong>
@@ -522,8 +520,8 @@
 
 
     <!-- ========== CONTACT SECTION ========== -->
-    <footer style="margin-top:100px; text-align:center;">
-      <p style="font-family:var(--font-mono); font-size:1rem;">
+    <footer style="margin-top:48px; text-align:center;">
+      <p style="font-family:var(--font-body); font-size:1rem;">
         <a href="mailto:15182555061@163.com" style="text-decoration:underline;">15182555061@163.com</a>
       </p>
     </footer>
