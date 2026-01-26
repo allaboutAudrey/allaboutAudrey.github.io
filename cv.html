@@ -224,20 +224,24 @@
     .section-group {
       display: grid;
       grid-template-columns: 180px 1fr;
-      column-gap: 36px; /* 二级标题更靠近大标题（约原来的 1/3） */ /* 缩小一级标题与内容区间距 */
-      margin-: 120px;
+      column-gap: 36px; /* 二级标题更靠近大标题 */
+      margin-bottom: 80px; /* 确保每个部分之间有适当的间距 */
+      position: relative; /* 给 sticky 提供参考上下文 */
     }
     }
 
+
+    /* 优化大标题的 sticky 效果 */
     .section-title {
       font-family: var(--font-title);
       font-size: 2.6rem;
-      color: var(-accent-color);
+      color: var(--accent-color);
       position: sticky;
-      top: 140px; /* 或更精准的值 */
-      z-index: 10; /* 确保覆盖内容 */
+      top: 64px; /* 你可以根据需要调整，保证不挡住导航 */
+      z-index: 10; /* 确保大标题在前 */
       align-self: flex-start;
-      letter-spacing: 0.5px;   
+      letter-spacing: 0.5px;
+      margin-bottom: 48px; /* 防止和内容紧贴 */
     }
     }
 
@@ -245,7 +249,7 @@
     .section-content h3 {
       font-family: var(--font-title);
       font-size: 2.0rem; /* 略小于一级标题 */
-      margin-bottom: 10px;
+      margin-bottom: 18px;
     } /* 缩小二级标题下方间距 */
     }
     }
@@ -260,7 +264,7 @@
     .section-content h4 {
       font-family: var(--font-serif); /* What Can I Do 下同级文本 */
       font-size: 1.0rem; /* 小于二级标题 */
-      margin-bottom: 6px;
+      margin-bottom: 12px;
       color: var(--text-color);
       letter-spacing: 0.02em;
     }
