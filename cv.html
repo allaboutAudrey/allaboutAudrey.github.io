@@ -64,7 +64,7 @@
       font-family: var(--font-body);
       background-color: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.4;
       transition: background-color 0.4s ease, color 0.4s ease;
       overflow-x: hidden;
     }
@@ -202,7 +202,7 @@
       border-radius: 999px;
       overflow: hidden;
     
-      margin-bottom: 48px; /* 👈 新增：拉开与正文的距离 */
+      margin-bottom: 38px; /* 👈 新增：拉开与正文的距离 */
     }
 
     .theme-toggle button {
@@ -221,17 +221,7 @@
     }
 
     /* ========== SECTIONS ========== */
-    .section-group {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      column-gap: 36px; /* 二级标题更靠近大标题 */
-      margin-bottom: 80px; /* 确保每个部分之间有适当的间距 */
-      position: relative; /* 给 sticky 提供参考上下文 */
-    }
-    }
-
-
-    /* 优化大标题的 sticky 效果 */
+       /* 优化大标题的 sticky 效果 */
     .section-title {
       font-family: var(--font-title);
       font-size: 2.6rem;
@@ -243,13 +233,25 @@
       letter-spacing: 0.5px;
       margin-bottom: 48px; /* 防止和内容紧贴 */
     }
+    
+    /* 父容器的设置 */
+    .section-group {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      column-gap: 36px; /* 二级标题更靠近大标题 */
+      margin-bottom: 80px; /* 确保每个部分之间有适当的间距 */
+      position: relative; /* 给 sticky 提供参考上下文 */
     }
-
+    
+    /* 内容与大标题的间距 */
+    .section-content {
+      margin-top: 80px;
+    }
 
     .section-content h3 {
       font-family: var(--font-title);
       font-size: 2.0rem; /* 略小于一级标题 */
-      margin-bottom: 18px;
+      margin-bottom: 26px;
     } /* 缩小二级标题下方间距 */
     }
     }
@@ -262,9 +264,9 @@
     } 
 
     .section-content h4 {
-      font-family: var(--font-serif); /* What Can I Do 下同级文本 */
+      font-family: var(--font-serif); /* skills 同级文本 */
       font-size: 1.0rem; /* 小于二级标题 */
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       color: var(--text-color);
       letter-spacing: 0.02em;
     }
