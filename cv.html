@@ -309,7 +309,7 @@
     /* ========== AWARDS ALIGNMENT ========== */
       .awards-list {
         display: grid;
-        row-gap: 10px;
+        row-gap: 8px;
         max-width: 760px;
         margin-top: 8px;
         margin-bottom: 80px; /* ⭐ 关键：给 section 一个“结束感” */
@@ -359,7 +359,44 @@
         font-size: 1.8rem;
       }
     }
-  </style>
+    
+ <style>
+/* ========== FONT FACE ========== */
+@font-face {
+  font-family: 'Dela Gothic One';
+  src: url('./fonts/DelaGothicOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Young Serif';
+  src: url('./fonts/YoungSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Special Elite';
+  src: url('./fonts/SpecialElite-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========== FONT SYSTEM (EDITABLE) ========== */
+:root {
+  --font-title: 'Dela Gothic One', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Young Serif', serif;
+  --font-decorative-2: 'Special Elite', cursive;
+}
+
+/* 后面继续你原来的 CSS */
+</style>
+
 </head>
 <body data-theme="light">
   <div class="hero" id="hero">
@@ -492,9 +529,11 @@
         <div style="margin-bottom:28px;">
           <h3>Side Project</h3>
           <p style="font-family:var(--font-title);">
-            <strong>Freelance Photographer</strong>
+            <strong>Freelancer</strong>
+            <br/>Photographer<br/>
             <br/>2023 — Now<br/><br/>
-            <strong>Running a business – Campus catering operations and marketing</strong>
+            <strong>Course Practice（Running a business)</strong>
+            <br/>Campus catering operations and marketing<br/>
             <br/>2023.04
           </p>
         </div>
