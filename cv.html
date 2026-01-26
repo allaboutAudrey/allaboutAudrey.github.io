@@ -2,25 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Audrey Xu</title>
-  <meta name="viewport" content="width=1440" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ================= FONT FACE ================= */
-    @font-face {
-      font-family: 'Dela Gothic One';
-      src: url('./fonts/DelaGothicOne-Regular.ttf') format('truetype');
-    }
-    @font-face {
-      font-family: 'Young Serif';
-      src: url('./fonts/YoungSerif-Regular.ttf') format('truetype');
-    }
-    @font-face {
-      font-family: 'Special Elite';
-      src: url('./fonts/SpecialElite-Regular.ttf') format('truetype');
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      /* ========== COLOR SYSTEM ========== */
+      --bg-color: #DEEFF4;
+      --card-bg: #e2e2d8;
+      --text-color: #1f1f1f;
+      --subtext-color: #555;
+      --accent-color: #9c3b2f;
+      --tag-bg: #d9d9cf;
+
+      /* ========== FONT SYSTEM (EDITABLE) ========== */
+      --font-title: 'Dela Gothic One', sans-serif; /* 一级 / 二级标题 */
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; /* 正文 */
+      --font-serif: 'Young Serif', serif; /* 叙事型文本 */
+      --font-mono: 'DM Mono', monospace; /* 技术 / 注释 */
+      --font-decorative-1: 'Kirang Haerang', cursive; /* 个性化强调 */
+      --font-decorative-2: 'Special Elite', cursive; /* 复古打字机感 */
     }
 
-    /* ================= RESET ================= */
+    [data-theme="dark"] {
+      --bg-color: #0f1315;
+      --card-bg: #1c1f22;
+      --text-color: #f2f2f2;
+      --subtext-color: #aaa;
+      --accent-color: #d96a5f;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --subtext-color: #b5b5b5;
+      --accent-color: #ff6b5c;
+      --card-bg: #1e1e1e;
+      --tag-bg: #2a2a2a;
+    }
+
+    /* ========== FONTS PLACEHOLDER ==========
+    Titles: 'Dela Gothic One'
+    Subtitles: 'Young Serif'
+    Mono / Decorative: 'DM Mono', 'Kirang Haerang', 'Special Elite'
+    Replace font-family once downloaded
+    ===================================== */
+
+    /* ========== GLOBAL ========== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -28,224 +62,500 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      font-size: 20px;
-      line-height: 1.2;
-      color: #111;
-      background: #fff;
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
     }
 
-    /* ================= LAYOUT ================= */
-    .page {
-      width: 1440px;
-      margin: 0 auto;
-      padding-top: 64px;
-      padding-bottom: 80px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .section {
+    /* ========== HERO ========== */
+    .hero {
+      height: 100vh;
       display: flex;
-      width: 1200px;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-color);
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .hero.hide {
+      opacity: 0;
+      transform: translateY(-40px);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      font-family: var(--font-title);
+      font-size: 2.6rem;
+      text-align: center;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+      animation: heroPop 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+     .most-personal-wrapper {
+      width: 100%;
+      margin-top: 200px; /* 和 experience 的间距 */
+    }
+    
+    .most-personal-img {
+      width: 100%;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      margin-top: -1px; /* 防止 SVG/PNG 拼接缝 */
+    }
+
+    
+    @keyframes heroPop {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.01);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .site-content {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .site-content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 48px 32px 120px;
     }
 
-    .section + .section {
-      margin-top: 200px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 72px;
     }
 
-    .sticky-col {
-      width: 370px;
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+   .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: var(--card-bg);
       flex-shrink: 0;
     }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;   /* 关键：不变形、自动裁切 */
+      display: block;
+    }
 
-    .sticky-col h2 {
+    .name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--subtext-color);
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--subtext-color);
+    }
+
+    /* ========== THEME TOGGLE ========== */
+    .theme-toggle {
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .theme-toggle button {
+      border: none;
+      background: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--subtext-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .theme-toggle button.active {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section-group {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      column-gap: 26px; /* 二级标题更靠近大标题（约原来的 1/3） */ /* 缩小一级标题与内容区间距 */
+      margin-bottom: 120px;
+    }
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      color: var(--accent-color);
       position: sticky;
-      top: 64px;
-      font-family: 'Dela Gothic One';
-      font-size: 36px;
+      top: 140px;
+      align-self: flex-start;
+      letter-spacing: 0.5px;
+    }
     }
 
-    .content-col {
-      margin-left: 105px;
-      flex: 1;
+    .section-content h3 {
+      font-family: var(--font-title);
+      font-size: 1.45rem; /* 略小于一级标题 */
+      margin-bottom: 10px;
+    } /* 缩小二级标题下方间距 */
+    }
     }
 
-    /* ================= HEADINGS ================= */
-    .sub-title {
-      font-family: 'Dela Gothic One';
-      font-size: 28px;
-      margin-bottom: 25px;
+      .about-clamp {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;   /* 控制显示几行：2 / 3 / 4 */
+      overflow: hidden;
+    } 
+
+    .section-content h4 {
+      font-family: var(--font-serif); /* What Can I Do 下同级文本 */
+      font-size: 1.15rem; /* 小于二级标题 */
+      margin-bottom: 8px;
+      color: var(--accent-color);
+      letter-spacing: 0.02em;
+    }
     }
 
-    /* ================= INNER SELF ================= */
-    .inner-self-wrapper {
-      width: 1440px;
-      margin: 200px auto 0;
+    p {
+      max-width: 720px;
+      color: var(--subtext-color);
     }
 
-    .inner-self-canvas {
-      width: 1240px;
-      margin: 0 auto;
-      position: relative;
-      height: 900px; /* 足够容纳所有元素 */
+    @media (max-width: 768px) {
+      .section-group {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        margin-bottom: 16px;
+      }
     }
 
-    /* IS-01 */
-    .is-title {
-      position: absolute;
-      left: 312px;
-      top: 0;
-      font-family: 'Dela Gothic One';
-      font-size: 24px;
-      z-index: 1;
+    /* ========== SKILLS ========== */
+    .skill-group {
+      margin-bottom: 32px;
     }
 
-    /* IS-02 */
-    .circle-1 {
-      position: absolute;
-      width: 127px;
-      height: 127px;
-      border-radius: 50%;
-      background: #111;
-      left: 1062px;
-      top: 47px;
-      z-index: 2;
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    /* IS-03 */
-    .circle-2 {
-      position: absolute;
-      width: 131px;
-      height: 131px;
-      border-radius: 50%;
-      background: #111;
-      left: 202px;
-      top: 465px;
-      z-index: 3;
+    .tag {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      font-size: 0.85rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+      cursor: default;
     }
 
-    /* IS-07 background rectangle */
-    .is-bg {
-      position: absolute;
-      width: 970px;
-      height: 380px;
-      background: #f3f3f3;
-      left: 297px;
-      top: 131px;
-      z-index: 0;
+    .tag:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: var(--accent-color);
+      color: #fff;
     }
 
-    /* IS-06 image */
-    .is-photo {
-      position: absolute;
-      width: 400px;
-      height: 280px;
-      object-fit: cover;
-      left: 632px;
-      top: 127px;
-      z-index: 4;
+    /* ========== AWARDS ALIGNMENT ========== */
+    .awards-list {
+      display: grid;
+      row-gap: 10px;
+      max-width: 760px;
+      margin-top: 8px;
+      font-family: var(--font-serif);
+      color: var(--subtext-color);
     }
 
-    /* IS-05 */
-    .is-note {
-      position: absolute;
-      left: 1051px;
-      top: 161px;
-      font-family: 'Special Elite';
-      font-size: 24px;
-      z-index: 5;
+    .award-row {
+      display: grid;
+      grid-template-columns: 1fr 120px; /* 左：比赛名，右：奖项对齐 */
+      column-gap: 16px;
     }
 
-    /* IS-04 */
-    .is-text {
-      position: absolute;
-      left: 281px;
-      top: 468px;
-      width: 270px;
-      font-family: 'Special Elite';
-      font-size: 36px;
-      z-index: 6;
+    .award-rank {
+      text-align: right;
+      white-space: nowrap;
     }
 
-    /* ================= CONTACT ================= */
-    footer {
-      width: 1200px;
-      margin: 200px auto 0;
-      font-family: 'Dela Gothic One';
-      font-size: 28px;
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .section-group {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        margin-bottom: 16px;
+        position: relative;
+        top: 0;
+      }
+
+      .award-row {
+        grid-template-columns: 1fr; /* 移动端自然换行 */
+      }
+
+      .award-rank {
+        text-align: left;
+        font-size: 0.9rem;
+      }
     }
 
-    footer a {
-      text-decoration: none;
-      color: inherit;
+      .container {
+        padding: 32px 20px 80px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
-
-<body>
-  <div class="page">
-
-    <!-- ABOUT -->
-    <section class="section">
-      <div class="sticky-col">
-        <h2>about</h2>
-      </div>
-      <div class="content-col">
-        <div class="sub-title">hello</div>
-        <p>My name is Audrey and it is really nice to meet you.</p>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section">
-      <div class="sticky-col">
-        <h2>experience</h2>
-      </div>
-      <div class="content-col">
-        <div class="sub-title">awards</div>
-        <p>National Advertising Art Competition for College Students (16th) — Third Prize</p>
-      </div>
-    </section>
-
-    <!-- INNER SELF -->
-    <section class="inner-self-wrapper">
-      <div class="section">
-        <div class="sticky-col">
-          <h2>Inner self</h2>
-        </div>
-      </div>
-
-      <div class="inner-self-canvas">
-        <div class="is-title">Truth about me</div>
-
-        <div class="circle-1"></div>
-        <div class="circle-2"></div>
-
-        <div class="is-bg"></div>
-
-        <img src="./images/photo-01.jpg" alt="Personal photo collage" class="is-photo" />
-
-        <div class="is-note">
-          PEOPLE pleaser<br/>
-          Cat Person<br/>
-          Dog person
-        </div>
-
-        <div class="is-text">
-          Born in 2004<br/>
-          INFJ<br/><br/>
-          Film enthusiast<br/>
-          Likes hiking, wandering,<br/>
-          & sunbathing.
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <footer>
-      <a href="mailto:your@email.com">contact</a>
-    </footer>
-
+<body data-theme="light">
+  <div class="hero" id="hero">
+    <h1 class="hero-text">My name is Audrey<br/>and it is really nice to meet you</h1>
   </div>
+  <div class="site-content" id="siteContent">
+  <div class="container">
+    <header>
+  <div class="profile">
+    <div class="avatar">
+      <img
+        src="images/avatar.jpg"
+        alt="Audrey Xu portrait"
+      />
+    </div>
+    <div>
+      <div class="name" style="font-family:'Dela Gothic One',sans-serif;">
+        Audrey Xu
+      </div>
+      <div class="tagline">
+        Try, learn, practice, progress a little, repeat.
+      </div>
+      <div class="location">
+        Greater Bay Area (Guangzhou / Shenzhen / Hongkong)
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <div class="theme-toggle">
+        <button id="darkBtn">Dark</button>
+        <button id="lightBtn" class="active">Light</button>
+      </div>
+    </header>
+
+    <section class="section-group">
+      <div class="section-title">About</div>
+      <div class="section-content">
+        <h3>Who Am I?</h3>
+       <p class="about-clamp">
+        Hello. <br/>
+         I am Audrey. Currently studying for a Bachelor's degree in Advertising at Sichuan Agricultural University (211),<br/>
+         and exploring specific future development directions.<br/>
+         <br/>
+      </p>
+      
+      <p class="about-clamp">
+        I have one year of internship experience in brand communication (ToC), user operation and research (ToB),<br/>
+        and B2B business.
+      </p>
+
+
+        <h3 style="margin-top:48px;">What Can I Do?</h3>
+
+        <div class="skill-group">
+          <h4>Data Processing & Visualization</h4>
+          <div class="tags">
+            <div class="tag">SQL</div>
+            <div class="tag">Excel</div>
+            <div class="tag">Power BI</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Knowledge Base Management</h4>
+          <div class="tags">
+            <div class="tag">Notion</div>
+            <div class="tag">Feishu</div>
+            <div class="tag">Cursor</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Design</h4>
+          <div class="tags">
+            <div class="tag">Figma</div>
+            <div class="tag">Canva</div>
+            <div class="tag">Photoshop</div>
+            <div class="tag">Vibe Coding</div>
+            <div class="tag">Prototyping</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:48px;">Awards</h3>
+        <div class="awards-list">
+          <div class="award-row"><span class="award-name">National Advertising Art Competition for College Students (16th)</span><span class="award-rank">Third Prize</span></div>
+          <div class="award-row"><span class="award-name">New Media Competition for Western and Central University Students</span><span class="award-rank">Third Prize</span></div>
+          <div class="award-row"><span class="award-name">Times Young Creative Award (33rd)</span><span class="award-rank">Second Prize</span></div>
+          <div class="award-row"><span class="award-name">Sichuan Province Leibo Cup Agricultural Creative Design Competition</span><span class="award-rank">First Prize</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section class="section-group">
+      <div class="section-title">Experience</div>
+      <div class="section-content">
+        <div style="margin-bottom:48px;">
+          <h3>Education</h3>
+          <p style="font-family:var(--font-serif);">
+            <strong>Undergraduate</strong><br/>
+            2022–2026<br/>
+            Sichuan Agricultural University | School of Arts and Media – Advertising<br/><br/>
+            <strong>Course</strong><br/>
+            GPA: 3.83 / 4.0<br/>
+            User Research | Consumer Behavior | Marketing | Strategic Brand Management<br/>
+            Market Investigation and Statistics | Advertising Operations and Management<br/><br/>
+            <strong>Language</strong><br/>
+            IELTS: overall 7.0
+          </p>
+        </div>
+
+        <div style="margin-bottom:48px;">
+          <h3>Internship</h3>
+          <p style="font-family:var(--font-serif);">
+            <strong>Brandstar</strong>
+            <br/>User Operations (B2B Business)<br/>
+            2025.07 — 2026.01 · Guangzhou, China<br/><br/>
+
+            <strong>Impact Hub Shanghai</strong>
+            <br/>Brand Communication (ToC)<br/>
+            2025.01 — 2025.04 · Remote, China<br/><br/>
+
+            <strong>Mianyang City Cultural, Radio, Television and Tourism Bureau</strong>
+            <br/>Administrative<br/>
+            2024.07 — 2024.09 · Mianyang, China
+          </p>
+        </div>
+
+        <div style="margin-bottom:48px;">
+          <h3>Side Project</h3>
+          <p style="font-family:var(--font-serif);">
+            <strong>Freelance Photographer</strong>
+            <br/>2023 — Now<br/><br/>
+            <strong>Running a business – Campus catering operations and marketing</strong>
+            <br/>2023.04
+          </p>
+        </div>
+      </div>
+    </section>
+
+   <!-- ========== MOST PERSONAL SECTION (SPLIT IMAGE VERSION) ========== -->
+<div class="most-personal-wrapper">
+  <img
+    src="images/most-personal-top.svg"
+    alt="Most personal section – top layout"
+    class="most-personal-img"
+  />
+
+  <img
+    src="images/most-personal-middle.svg"
+    alt="Most personal section – middle layout"
+    class="most-personal-img"
+  />
+
+  <img
+    src="images/most-personal-bottom.svg"
+    alt="Most personal section – bottom layout"
+    class="most-personal-img"
+  />
+</div>
+
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <footer style="margin-top:100px; text-align:center;">
+      <p style="font-family:var(--font-mono); font-size:1rem;">
+        <a href="mailto:15182555061@163.com" style="text-decoration:underline;">15182555061@163.com</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const body = document.body;
+    const darkBtn = document.getElementById('darkBtn');
+    const lightBtn = document.getElementById('lightBtn');
+
+    darkBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'dark');
+      darkBtn.classList.add('active');
+      lightBtn.classList.remove('active');
+    });
+
+    lightBtn.addEventListener('click', () => {
+      body.setAttribute('data-theme', 'light');
+      lightBtn.classList.add('active');
+      darkBtn.classList.remove('active');
+    });
+  </script>
+  </div>
+  <script>
+    const hero = document.getElementById('hero');
+    const content = document.getElementById('siteContent');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight * 0.3) {
+        hero.classList.add('hide');
+        content.classList.add('show');
+      }
+    });
+  </script>
 </body>
 </html>
