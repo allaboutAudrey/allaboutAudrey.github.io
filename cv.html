@@ -53,6 +53,33 @@
     Replace font-family once downloaded
     ===================================== */
 
+    /* 添加自定义颜色变量 */
+    :root {
+      --title-color: #A0442E; /* 例如：大标题颜色 */
+      --subtitle-color: #A0442E; /* 例如：二级标题颜色 */
+    }
+    
+    /* ========== 大标题 ========== */
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.6rem;
+      color: var(--title-color); /* 使用自定义颜色 */
+      position: sticky;
+      top: 64px;
+      z-index: 10;
+      align-self: flex-start;
+      letter-spacing: 0.5px;
+      margin-bottom: 48px;
+    }
+    
+    /* ========== 二级标题 ========== */
+    .section-content h3 {
+      font-family: var(--font-title);
+      font-size: 1.9rem;
+      color: var(--subtitle-color); /* 使用自定义颜色 */
+      margin-bottom: 26px;
+    }
+
     /* ========== GLOBAL ========== */
     * {
       box-sizing: border-box;
@@ -113,7 +140,7 @@
       display: block;
       pointer-events: none;
       user-select: none;
-      margin-top: -1px; /* 防止 SVG/PNG 拼接缝 */
+      margin-top: -2px; /* 防止 SVG/PNG 拼接缝 */
     }
 
     
@@ -164,8 +191,8 @@
     }
 
    .avatar {
-      width: 96px;
-      height: 96px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       overflow: hidden;
       background-color: var(--card-bg);
@@ -186,7 +213,7 @@
     }
 
     .tagline {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--subtext-color);
     }
 
@@ -238,7 +265,7 @@
     .section-group {
       display: grid;
       grid-template-columns: 180px 1fr;
-      column-gap: 36px; /* 二级标题更靠近大标题 */
+      column-gap: 68px; /* 二级标题更靠近大标题 */
       margin-bottom: 80px; /* 确保每个部分之间有适当的间距 */
       position: relative; /* 给 sticky 提供参考上下文 */
     }
@@ -429,7 +456,7 @@
         Try, learn, practice, progress a little, repeat.
       </div>
       <div class="location">
-        Greater Bay Area  (Guangzhou / Shenzhen / Hongkong)
+        Greater Bay Area (Guangzhou / Shenzhen / Hongkong)
       </div>
     </div>
   </div>
@@ -453,8 +480,8 @@
       </p>
       
       <p class="about-clamp">
-        I have one year of internship experience in brand communication  (ToC), user operation & research  (ToB),<br/>
-        and B2B business.
+        I have one year of internship experience in brand communication (ToC), user operation & user research (ToB), 
+        <br/>and B2B business.
       </p>
 
 
