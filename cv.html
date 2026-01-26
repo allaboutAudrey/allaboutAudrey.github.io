@@ -34,14 +34,14 @@
       --card-bg: #1c1f22;
       --text-color: #f2f2f2;
       --subtext-color: #aaa;
-      --accent-color: #d96a5f;
+      --accent-color: #A0442E;
     }
 
     [data-theme="dark"] {
       --bg-color: #121212;
       --text-color: #f5f5f5;
       --subtext-color: #b5b5b5;
-      --accent-color: #ff6b5c;
+      --accent-color: #A0442E;
       --card-bg: #1e1e1e;
       --tag-bg: #2a2a2a;
     }
@@ -132,7 +132,7 @@
 
      .most-personal-wrapper {
       width: 100%;
-      margin-top: 20px; /* 和 experience 的间距 */
+      margin-top: 0px; /* 和 experience 的间距 */
     }
     
     .most-personal-img {
@@ -140,7 +140,7 @@
       display: block;
       pointer-events: none;
       user-select: none;
-      margin-top: -2px; /* 防止 SVG/PNG 拼接缝 */
+      margin-top: -4px; /* 防止 SVG/PNG 拼接缝 */
     }
 
     
@@ -265,7 +265,7 @@
     .section-group {
       display: grid;
       grid-template-columns: 180px 1fr;
-      column-gap: 100px; /* 二级标题更靠近大标题 */
+      column-gap: 150px; /* 二级标题更靠近大标题 */
       margin-bottom: 80px; /* 确保每个部分之间有适当的间距 */
       position: relative; /* 给 sticky 提供参考上下文 */
     }
@@ -291,7 +291,7 @@
     } 
 
     .section-content h4 {
-      font-family: var(--font-serif); /* skills 同级文本 */
+      font-family: var(--); /* skills 同级文本 */
       font-size: 1.0rem; /* 小于二级标题 */
       margin-bottom: 8px;
       color: var(--text-color);
@@ -339,7 +339,7 @@
     .tag:hover {
       transform: translateY(-2px) scale(1.03);
       background: var(--text-color);
-      color: #fff;
+      color: #A0442E;
     }
 
     /* ========== AWARDS ALIGNMENT ========== */
@@ -349,8 +349,8 @@
         max-width: 760px;
         margin-top: 8px;
         margin-bottom: 80px; /* ⭐ 关键：给 section 一个“结束感” */
-        font-family: var(--font-serif);
-        color: var(--subtext-color);
+        font-family: var(--font-body);
+        color: var(--text-color);
       }
 
 
