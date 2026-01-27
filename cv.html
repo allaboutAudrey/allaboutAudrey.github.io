@@ -293,7 +293,7 @@
       -webkit-line-clamp: 5;   /* 控制显示几行：2 / 3 / 4 */
       overflow: hidden;
       color: var(--text-color);
-      max-width: 690px;
+      max-width: 700px;
       margin-bottom: 0px;
     } 
 
@@ -309,6 +309,11 @@
     p {
       max-width: 720px;
       color: var(--subtext-color);
+      font-size: 1rem;  /* 确保字体大小一致 */
+      line-height: 1.6;  /* 保证合适的行间距 */
+      word-wrap: break-word;  /* 防止长单词被拆开 */
+      white-space: normal;  /* 确保换行符合正常排版 */
+      margin-bottom: 25px;  /* 调整段落底部间距 */
     }
 
     @media (max-width: 768px) {
